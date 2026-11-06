@@ -1,0 +1,94 @@
+/* ==========================================================================
+   Natyanjali design tokens
+   Values follow the visual language of sarvam.ai/brand-guidelines.
+   Change a value here and it updates across the whole site.
+   See DESIGN.md for how each token is meant to be used.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --surface: #fcfcfc;
+  --surface-raised: #ffffff;
+  --surface-2: #f5f5f5;
+  --surface-3: #f0f0f0;
+  --surface-inverse: #141414;
+
+  /* Strokes */
+  --stroke: #e6e6e6;
+  --stroke-soft: #f0f0f0;
+  --stroke-strong: #8a8a8a; /* form controls: 3:1 against the surface */
+
+  /* Text */
+  --text: #1f1f1f;
+  --text-2: #3d3d3d;
+  --text-3: #666666;
+  --text-inverse: #faf8f5;
+  --text-inverse-2: #b9b4ae;
+
+  /* Brand */
+  --blue: #393cc1;
+  --ink: #2a2c33; /* primary button */
+  --danger: #b3261e;
+
+  /* The footer rosette. The logo's disc in favicon.svg uses the same value. */
+  --gold-on-dark: #c9992e;
+
+  /* Type families */
+  --font-display: "Newsreader", "Noto Serif Malayalam", Georgia, serif;
+  --font-body: "Figtree", "Noto Sans Malayalam", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, Menlo, monospace;
+  --font-malayalam: "Manjari", "Noto Sans Malayalam", sans-serif;
+
+  /* Type scale */
+  --text-display: clamp(2.5rem, 1.45rem + 4.6vw, 4.5rem);
+  --text-title: clamp(2rem, 1.55rem + 1.9vw, 3.25rem);
+  --text-heading: 1.625rem;
+  --text-lede: 1.125rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-label: 0.75rem;
+
+  --weight-regular: 425;
+  --weight-medium: 525;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: clamp(4.5rem, 3rem + 6vw, 8rem);
+
+  /* Layout */
+  --page-max: 72rem;
+  --reading-max: 36rem;
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --nav-height: 68px;
+
+  /* Radii */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 2rem;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --shadow-card: 0 0 40px 0 #0000000f;
+  --shadow-button-primary: inset 0 1px 0 0 #ffffff66, inset 0 -2px 0 0 #00000033;
+  --shadow-button-secondary: inset 0 2px 0 0 #c8c8c81a, inset 0 -1px 0 0 #0000000d;
+
+  /* Focus */
+  --focus-ring: 0 0 0 3px #393cc140;
+  --danger-ring: 0 0 0 3px #b3261e26;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 450ms;
+}

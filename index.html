@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Natyanjali Nṛtta Kalakshetra | Bharatanatyam classes in Kerala</title>
+  <meta name="description" content="Register to learn Bharatanatyam at Natyanjali Nṛtta Kalakshetra, a dance school in Kerala since 2013, with classes in Kakkanad, Chalakudy and Potta.">
+  <meta property="og:title" content="Natyanjali Nṛtta Kalakshetra">
+  <meta property="og:description" content="Bharatanatyam classes in Kakkanad, Chalakudy and Potta, Kerala. Register to join.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#fcfcfc">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="images/dancer-standing.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Figtree:wght@300..700&family=Manjari:wght@400&family=Newsreader:opsz,wght@6..72,400&display=swap">
+  <script>
+    // Opening animations only run on a visible page. They finish in under 2 seconds, so the
+    // class always comes off at 2.5: if they ever stall, the text still appears.
+    if (document.visibilityState === "visible" && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("animate-in");
+      setTimeout(function () { document.documentElement.classList.remove("animate-in"); }, 2500);
+    }
+  </script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#register">Skip to registration</a>
+
+  <div class="page">
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="#top" aria-label="Natyanjali, back to top">
+          <img src="favicon.svg" alt="" width="28" height="28">
+          Natyanjali
+        </a>
+        <nav class="nav-links" aria-label="Pages">
+          <a href="about.html">About</a>
+          <a href="gallery.html">Gallery</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="#register">Register</a>
+          <a class="btn btn-primary" href="contact.html">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <img class="hero-pillar" src="images/temple-pillar-gold.png" alt="" width="426" height="1131">
+        <div class="wrap hero-inner">
+          <div class="hero-text">
+            <div class="ornament" aria-hidden="true">
+              <img src="images/ornament-gold.png" alt="" width="390" height="352">
+            </div>
+            <h1 class="display">Natyanjali Nṛtta Kalakshetra</h1>
+            <p class="hero-malayalam" lang="ml">നാട്യാഞ്ജലി നൃത്ത കലാക്ഷേത്ര</p>
+            <p class="lede">A Bharatanatyam dance school in Kerala since 2013, with classes in Kakkanad, Chalakudy and Potta. Beginners are welcome.</p>
+            <a class="btn btn-primary btn-large" href="#register">Register to join</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="images/dancer-standing.jpg" alt="A Bharatanatyam dancer seen from behind, one arm raised in a graceful curve, her long braid swinging out." width="1200" height="1500" fetchpriority="high">
+        </div>
+      </section>
+
+      <section class="section wrap register" id="register" aria-labelledby="register-title">
+        <div class="register-grid">
+          <div class="register-intro">
+            <h2 class="title" id="register-title">Register to join the class</h2>
+            <p class="lede">It takes about two minutes. Parents can fill this in for their child.</p>
+            <h3 class="next-steps-title">What happens next</h3>
+            <ol class="next-steps">
+              <li><span class="label">01</span><span>We receive your registration.</span></li>
+              <li><span class="label">02</span><span>We call you to confirm the batch, timing and fees.</span></li>
+              <li><span class="label">03</span><span>You come to your first class.</span></li>
+            </ol>
+          </div>
+
+          <div class="card form-card">
+            <form id="registration-form" novalidate>
+              <div class="form-grid">
+                <div class="field span-2" data-field="studentName">
+                  <label class="field-label" for="studentName">Student's full name</label>
+                  <input class="input" id="studentName" name="studentName" type="text" autocomplete="name" maxlength="120" required>
+                  <p class="field-error" hidden></p>
+                </div>
+
+                <div class="field" data-field="age">
+                  <label class="field-label" for="age">Student's age</label>
+                  <input class="input" id="age" name="age" type="number" inputmode="numeric" min="3" max="99" required>
+                  <p class="field-error" hidden></p>
+                </div>
+
+                <div class="field" data-field="phone">
+                  <label class="field-label" for="phone">Phone number</label>
+                  <input class="input" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" required aria-describedby="phone-hint">
+                  <p class="hint" id="phone-hint">We'll call or WhatsApp you on this number.</p>
+                  <p class="field-error" hidden></p>
+                </div>
+
+                <fieldset class="field span-2" data-field="location">
+                  <legend class="group-label">Class location</legend>
+                  <div class="choice-row choice-short">
+                    <label class="choice"><input type="radio" name="location" value="Kakkanad" required><span>Kakkanad</span></label>
+                    <label class="choice"><input type="radio" name="location" value="Chalakudy"><span>Chalakudy</span></label>
+                    <label class="choice"><input type="radio" name="location" value="Potta"><span>Potta</span></label>
+                  </div>
+                  <p class="field-error" hidden></p>
+                </fieldset>
+
+                <fieldset class="field span-2" data-field="batch">
+                  <legend class="group-label">Batch</legend>
+                  <div class="choice-row choice-short">
+                    <label class="choice"><input type="radio" name="batch" value="Children" required><span>Children</span></label>
+                    <label class="choice"><input type="radio" name="batch" value="Teens"><span>Teens</span></label>
+                    <label class="choice"><input type="radio" name="batch" value="Adults"><span>Adults</span></label>
+                  </div>
+                  <p class="hint">Children 5 to 10, Teens 11 to 17, Adults 18 and up.</p>
+                  <p class="field-error" hidden></p>
+                </fieldset>
+
+                <div class="field span-2" data-field="guardianName" id="guardian-field" hidden>
+                  <label class="field-label" for="guardianName">Parent or guardian's name</label>
+                  <input class="input" id="guardianName" name="guardianName" type="text" maxlength="120">
+                  <p class="field-error" hidden></p>
+                </div>
+
+                <div class="field" data-field="email">
+                  <label class="field-label" for="email">Email <span class="optional">(optional)</span></label>
+                  <input class="input" id="email" name="email" type="email" autocomplete="email" maxlength="160">
+                  <p class="field-error" hidden></p>
+                </div>
+
+                <div class="field" data-field="experience">
+                  <label class="field-label" for="experience">Dance experience</label>
+                  <select class="input" id="experience" name="experience">
+                    <option>New to Bharatanatyam</option>
+                    <option>Some training</option>
+                    <option>Several years of training</option>
+                    <option>Arangettam completed</option>
+                  </select>
+                </div>
+
+                <fieldset class="field span-2" data-field="preferredTime">
+                  <legend class="group-label">Preferred time</legend>
+                  <div class="choice-row">
+                    <label class="choice"><input type="radio" name="preferredTime" value="Weekday evenings" required><span>Weekday evenings</span></label>
+                    <label class="choice"><input type="radio" name="preferredTime" value="Weekend mornings"><span>Weekend mornings</span></label>
+                    <label class="choice"><input type="radio" name="preferredTime" value="Any time"><span>Any time</span></label>
+                  </div>
+                  <p class="field-error" hidden></p>
+                </fieldset>
+
+                <div class="field span-2" data-field="message">
+                  <label class="field-label" for="message">Anything we should know? <span class="optional">(optional)</span></label>
+                  <textarea class="input" id="message" name="message" rows="3" maxlength="1000"></textarea>
+                </div>
+
+                <div class="trap" aria-hidden="true">
+                  <label for="website">Leave this empty</label>
+                  <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="field span-2" data-field="consent">
+                  <label class="consent">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <span>I agree that Natyanjali Nṛtta Kalakshetra can keep these details and contact me about this registration. If the student is under 18, I am their parent or guardian.</span>
+                  </label>
+                  <p class="field-error" hidden></p>
+                </div>
+
+                <div class="form-alert span-2" id="form-alert" role="alert" hidden></div>
+
+                <div class="span-2">
+                  <button class="btn btn-primary btn-large btn-block is-waiting" id="submit-button" type="submit">Send registration</button>
+                </div>
+              </div>
+            </form>
+
+            <div class="done" id="form-done" tabindex="-1" hidden>
+              <div class="done-check" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              </div>
+              <h3 class="heading" id="done-title"></h3>
+              <p id="done-text"></p>
+              <div class="done-actions">
+                <a class="btn btn-primary" id="done-whatsapp" target="_blank" rel="noopener" hidden>Send on WhatsApp</a>
+                <button class="btn btn-secondary" id="done-again" type="button">Register another student</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="wrap about-journey">
+        <section class="section journey-panel" id="journey" aria-labelledby="journey-title">
+          <img class="journey-bracket" src="images/temple-bracket-gold.png" alt="" width="212" height="380" loading="lazy">
+          <div class="wrap">
+            <div class="section-head">
+              <div class="ornament" aria-hidden="true">
+                <img src="images/ornament-gold.png" alt="" width="390" height="352">
+              </div>
+              <h2 class="title" id="journey-title">From your first step to the stage</h2>
+              <p class="lede">Bharatanatyam is learned in stages, and every student starts with the basics.</p>
+            </div>
+            <div class="journey-grid">
+              <ol class="journey-list">
+                <li>
+                  <span class="label">01</span>
+                  <span class="journey-name">Vidyarambam</span>
+                  <span class="journey-text">The traditional first day of learning, and the day our newest batches began.</span>
+                </li>
+                <li>
+                  <span class="label">02</span>
+                  <span class="journey-name">Adavu</span>
+                  <span class="journey-text">The basic units of movement: footwork, posture and rhythm, starting from the half-seated araimandi.</span>
+                </li>
+                <li>
+                  <span class="label">03</span>
+                  <span class="journey-name">Hasta</span>
+                  <span class="journey-text">The hand gestures, or mudras, that let a dancer tell a story without words.</span>
+                </li>
+                <li>
+                  <span class="label">04</span>
+                  <span class="journey-name">Abhinaya</span>
+                  <span class="journey-text">Expression through the face and body, bringing meaning and feeling to the dance.</span>
+                </li>
+                <li>
+                  <span class="label">05</span>
+                  <span class="journey-name">Margam</span>
+                  <span class="journey-text">The traditional sequence of a recital, from Alarippu through to Tillana.</span>
+                </li>
+                <li>
+                  <span class="label">06</span>
+                  <span class="journey-name">Arangettam</span>
+                  <span class="journey-text">A dancer's first full performance on stage, and a milestone our students have reached.</span>
+                </li>
+              </ol>
+              <figure class="seated-figure">
+                <img src="images/dancer-seated.png" alt="A Bharatanatyam dancer kneeling in a low pose, both arms stretched forward and her gaze lifted." width="960" height="952" loading="lazy">
+                <div class="seated-reflection" aria-hidden="true">
+                  <img src="images/dancer-seated.png" alt="" width="960" height="952" loading="lazy">
+                </div>
+              </figure>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <p class="footer-name">Natyanjali Nṛtta Kalakshetra</p>
+        <a class="btn btn-secondary btn-large" href="#register">Register to join</a>
+      </div>
+      <div class="footer-bottom">
+        <ul class="footer-contact" id="footer-contact">
+          <li id="footer-address">Kerala, India</li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a id="footer-instagram" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+        <span>&copy; <span id="year">2026</span> Natyanjali Nṛtta Kalakshetra</span>
+      </div>
+    </div>
+    <div class="footer-rosette" aria-hidden="true">
+      <svg id="rosette" viewBox="0 0 1000 1000"></svg>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/music.js"></script>
+</body>
+</html>

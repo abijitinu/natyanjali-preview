@@ -1,0 +1,969 @@
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + var(--space-5));
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--surface-inverse);
+  color: var(--text-2);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p, ol, ul, dl, dd, fieldset, legend { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+fieldset { border: 0; min-width: 0; }
+a { color: inherit; }
+img, svg, iframe { display: block; max-width: 100%; }
+img { height: auto; }
+[hidden] { display: none !important; }
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -4rem;
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: #fff;
+}
+.skip-link:focus { top: var(--space-3); }
+
+.page {
+  background: var(--surface);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+.wrap {
+  width: min(100%, calc(var(--page-max) + var(--gutter) * 2));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ==========================================================================
+   Type
+   ========================================================================== */
+
+.display, .title {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.display { font-size: var(--text-display); }
+.title { font-size: var(--text-title); }
+
+.lede {
+  color: var(--text-2);
+  font-size: var(--text-lede);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.heading {
+  color: var(--text);
+  font-size: var(--text-heading);
+  font-weight: var(--weight-medium);
+  line-height: 1.33;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+}
+
+/* The small gold ornament that sits above headings */
+.ornament {
+  width: 76px;
+  margin-inline: auto;
+}
+.ornament img { width: 100%; height: auto; }
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) 1.25rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: var(--weight-medium);
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-in-out), color var(--duration-fast) var(--ease-in-out), box-shadow var(--duration-fast) var(--ease-in-out), transform var(--duration-fast) var(--ease-in-out);
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: var(--ink);
+  box-shadow: var(--shadow-button-primary);
+  color: #fff;
+}
+/* On hover the button fills with gold and the text turns dark, which keeps it readable (about 6:1). */
+.btn-primary:hover:not(.is-waiting) {
+  background: var(--gold-on-dark);
+  box-shadow: none;
+  color: var(--text);
+}
+
+.btn-secondary {
+  background: var(--surface-2);
+  box-shadow: var(--shadow-button-secondary);
+  color: var(--text);
+}
+.btn-secondary:hover { background: var(--stroke); }
+
+.btn-large { min-height: 52px; padding-inline: 1.75rem; font-size: 1rem; }
+.btn-block { width: 100%; }
+
+/* Waits for the consent tick. Still clickable, so it can explain what's missing. */
+.btn-primary.is-waiting { background: var(--stroke); box-shadow: none; color: var(--text-3); }
+.btn-primary[aria-busy="true"] { cursor: progress; opacity: 0.75; }
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #fcfcfcd9;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 var(--stroke-soft);
+}
+
+/* The bar runs the full width of the screen: logo at the far left, buttons at the far right, with the same padding either side */
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-5);
+  height: var(--nav-height);
+  width: 100%;
+  margin: 0;
+  padding-inline: clamp(1rem, 0.4rem + 2.4vw, 2.5rem);
+}
+.brand { justify-self: start; }
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text);
+  font-size: 1.3125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+.brand img { width: 28px; height: 28px; }
+
+.nav-links { display: flex; gap: var(--space-6); }
+.nav-links a {
+  color: var(--text);
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+.nav-links a:hover { color: var(--text-3); }
+
+.nav-actions { display: flex; justify-self: end; gap: var(--space-2); }
+
+/* ==========================================================================
+   Hero: the title on the left, the dancer on the right, as one section
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  min-height: var(--hero-h);
+}
+
+.hero-inner { position: relative; z-index: 1; padding-block: var(--space-7); }
+
+/* The gold temple pillar on the left balances the dancer on the right. Both are sized from the same
+   height (--hero-h) so the pillar always runs from her raised hand down to her feet. */
+.hero {
+  --hero-h: min(calc(100svh - var(--nav-height)), 760px);
+  --fig-scale: 1.2;                                  /* the photo's height, as a multiple of --hero-h */
+  --fig-h: calc(var(--hero-h) * var(--fig-scale) * 0.634);   /* from her raised hand to her feet */
+  --fig-base: calc(var(--hero-h) * var(--fig-scale) * 0.12); /* her feet, measured up from the section's bottom */
+  --pillar-w: clamp(190px, 54vw, 320px);             /* phones only, see below */
+  --pillar-edge: 0.75rem;
+}
+.hero-pillar {
+  position: absolute;
+  bottom: var(--fig-base);
+  left: var(--pillar-edge);
+  height: var(--fig-h);
+  width: auto;
+  pointer-events: none;
+}
+
+.hero .display { font-size: clamp(2.25rem, 4.4vw, 4rem); }
+
+/* The text block is centred on the whole section. The dancer sits to its right, the pillar to its left. */
+.hero-text {
+  margin-inline: auto;
+  width: min(32rem, 44vw);
+  text-align: center;
+}
+.hero-text .ornament { margin: 0 auto var(--space-4); }
+
+.hero-malayalam {
+  margin-top: var(--space-2);
+  color: var(--text-3);
+  font-family: var(--font-malayalam);
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  line-height: 1.5;
+}
+
+.hero-text .lede { margin: var(--space-3) auto var(--space-5); }
+
+/* The photo's light side and floor fade into the page. Its dark corner keeps the right edge. */
+.hero-photo { position: absolute; inset: 0; pointer-events: none; }
+.hero-photo img {
+  position: absolute;
+  /* On narrower screens the dancer moves further right, off the centred text. Her dark corner is just cropped. */
+  right: calc(-1 * clamp(40px, (1560px - 100vw) * 0.5, 150px));
+  bottom: 0;
+  width: auto;
+  max-width: none;
+  height: calc(var(--hero-h) * var(--fig-scale));
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 32%), linear-gradient(180deg, #000 86%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 32%), linear-gradient(180deg, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* On narrow laptop and tablet screens the dancer is a little smaller and sits further right, clear of the centred text */
+@media (min-width: 861px) and (max-width: 1000px) {
+  .hero { --fig-scale: 1; }
+  .hero-photo img { right: -130px; }
+}
+
+/* ==========================================================================
+   Registration
+   ========================================================================== */
+
+.register { padding-bottom: 0; }
+
+.register-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(var(--space-6), 6vw, 6rem);
+  align-items: start;
+}
+
+.register-intro { position: sticky; top: calc(var(--nav-height) + var(--space-6)); }
+.register-intro .lede { margin-top: var(--space-3); }
+
+/* A soft clearing, so the gold pattern passes around this text and not through it */
+.register-intro { background: var(--surface); box-shadow: 0 0 28px 28px var(--surface); }
+
+.next-steps-title { margin-top: var(--space-6); margin-bottom: var(--space-2); color: var(--text); font-size: var(--text-body); font-weight: var(--weight-medium); }
+.next-steps li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  padding-block: 0.875rem;
+  border-top: 1px solid var(--stroke);
+}
+.next-steps .label { padding-top: 0.25rem; color: var(--text-3); }
+
+.card {
+  background: var(--surface-raised);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+}
+
+.form-card { padding: clamp(var(--space-5), 3vw, 2.5rem); box-shadow: var(--shadow-card); }
+
+/* ==========================================================================
+   Form
+   ========================================================================== */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-4);
+}
+.span-2 { grid-column: 1 / -1; }
+
+.field-label, .group-label {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--text);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  line-height: 1.4;
+}
+.optional { color: var(--text-3); font-weight: var(--weight-regular); }
+.hint { margin-top: 0.375rem; color: var(--text-3); font-size: 0.8125rem; line-height: 1.4; }
+
+.input {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 0.6875rem 0.875rem;
+  border: 1px solid var(--stroke-strong);
+  border-radius: var(--radius-md);
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem; /* 16px stops iOS zooming on focus */
+  line-height: 1.4;
+  transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
+}
+.input:hover { border-color: var(--text-3); }
+.input:focus { border-color: var(--blue); box-shadow: var(--focus-ring); outline: none; }
+textarea.input { min-height: 96px; resize: vertical; }
+
+select.input {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23666' stroke-width='1.5'%3E%3Cpath d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E");
+  background-position: right 0.875rem center;
+  background-repeat: no-repeat;
+}
+
+.field.has-error .input { border-color: var(--danger); box-shadow: var(--danger-ring); }
+.field-error {
+  margin-top: 0.375rem;
+  color: var(--danger);
+  font-size: 0.8125rem;
+  font-weight: var(--weight-medium);
+  line-height: 1.4;
+}
+
+/* Pill radios */
+.choice-row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.choice { position: relative; flex: 1 1 auto; }
+.choice input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+.choice span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--stroke-strong);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  text-align: center;
+  transition: background-color var(--duration-fast), color var(--duration-fast), border-color var(--duration-fast);
+}
+.choice input:hover + span { border-color: var(--text-3); }
+.choice input:checked + span { border-color: var(--ink); background: var(--ink); box-shadow: var(--shadow-button-primary); color: #fff; }
+.choice input:focus-visible + span { outline: 2px solid var(--blue); outline-offset: 2px; }
+.field.has-error .choice span { border-color: var(--danger); }
+
+/* Consent */
+.consent {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: var(--space-3);
+  color: var(--text-2);
+  font-size: var(--text-small);
+  line-height: 1.5;
+  cursor: pointer;
+}
+.consent input {
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
+/* Spam trap: bots fill this in, people never see it */
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.form-alert {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: #b3261e0f;
+  color: var(--danger);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+}
+.form-alert a { color: inherit; }
+
+/* Success panel */
+.done { text-align: center; padding-block: var(--space-5); }
+.done:focus { outline: none; }
+.done-check {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto var(--space-4);
+  border-radius: 50%;
+  background: linear-gradient(180deg, #d5650f 0%, #eaaf1c 100%);
+  color: #fff;
+}
+.done .heading { margin-bottom: var(--space-2); }
+.done-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2); margin-top: var(--space-5); }
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.section { padding-block: var(--space-9); }
+
+.section-head { max-width: var(--reading-max); margin-inline: auto; text-align: center; }
+.section-head .ornament { margin-bottom: var(--space-4); }
+.section-head .lede { margin-top: var(--space-3); }
+
+/* ==========================================================================
+   About page
+   ========================================================================== */
+
+.nav-links a[aria-current="page"] { font-weight: var(--weight-medium); text-decoration: underline; text-underline-offset: 4px; }
+
+.about-head { padding-block: var(--space-8) var(--space-7); text-align: center; overflow-x: clip; /* the turning side motifs must not widen the page */ }
+.about-head .ornament { margin-bottom: var(--space-4); }
+.about-head .lede { max-width: 36rem; margin: var(--space-4) auto 0; }
+
+.about-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+.about-card { padding: clamp(var(--space-5), 3vw, 2.5rem); }
+.about-card .label { display: block; margin-bottom: var(--space-2); color: var(--text-3); }
+.about-card p:not(.label) { margin-top: var(--space-2); font-size: var(--text-lede); }
+.about-places { margin-top: var(--space-3); }
+.about-places li { padding-block: var(--space-3); border-top: 1px solid var(--stroke); color: var(--text); font-size: var(--text-lede); font-weight: var(--weight-medium); }
+.about-places li:last-child { border-bottom: 1px solid var(--stroke); }
+
+.contact-list { margin-top: var(--space-3); }
+.contact-list > div { padding-block: var(--space-3); border-top: 1px solid var(--stroke); }
+.contact-list > div:last-child { border-bottom: 1px solid var(--stroke); }
+.contact-list dt { color: var(--text-3); }
+.contact-list a { color: var(--text); font-size: var(--text-lede); font-weight: var(--weight-medium); overflow-wrap: anywhere; text-underline-offset: 3px; }
+
+/* Contact page: the details card beside the message form */
+.contact-top { align-items: start; }
+.contact-form-card { box-shadow: var(--shadow-card); }
+.contact-form-card .title { margin-bottom: var(--space-5); }
+.contact-form-card .done { margin-top: var(--space-2); }
+
+/* Contact page: one card with a map for each class location */
+.locations { padding-top: var(--space-8); }
+.locations .section-head .label { display: block; margin-bottom: var(--space-2); color: var(--text-3); }
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-7);
+}
+.location-card { display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-card); }
+.location-map {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 0;
+  border-bottom: 1px solid var(--stroke);
+  background: var(--surface-2);
+}
+/* On touch screens the map is a picture, so a finger swiping down the page doesn't get caught by it.
+   The Get directions button opens the full, interactive map instead. */
+@media (hover: none) { .location-map { pointer-events: none; } }
+.location-body { display: flex; flex: 1; flex-direction: column; gap: var(--space-2); padding: var(--space-5); }
+.location-body .label { color: var(--text-3); }
+.location-address { flex: 1; margin-bottom: var(--space-3); color: var(--text-2); line-height: 1.5; }
+
+/* About page: the tutor's portrait beside her name */
+.tutor-card { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr); gap: var(--space-5); align-items: center; }
+.tutor-portrait { margin: 0; overflow: hidden; aspect-ratio: 4 / 5; border-radius: var(--radius-lg); background: var(--surface-3); }
+.tutor-portrait img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Gallery page: small photos in columns of different heights, like a Pinterest board.
+   Each photo keeps its own shape, and the columns fill from left to right. */
+.gallery { padding-bottom: var(--space-7); }
+.gallery .section-head .label { display: block; margin-bottom: var(--space-2); color: var(--text-3); }
+.gallery-grid { --gallery-gap: var(--space-3); columns: 11rem; column-gap: var(--gallery-gap); margin-top: var(--space-7); }
+.gallery-item { margin: 0 0 var(--gallery-gap); break-inside: avoid; }
+/* Set up by js/gallery.js: real columns, with each photo placed in the shortest one */
+.gallery-grid.is-masonry { display: flex; columns: auto; align-items: flex-start; }
+.gallery-column { display: flex; flex: 1 1 0; flex-direction: column; gap: var(--gallery-gap); min-width: 0; }
+.gallery-grid.is-masonry .gallery-item { width: 100%; margin: 0; }
+.gallery-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--surface-3);
+  box-shadow: var(--shadow-card);
+  cursor: zoom-in;
+}
+.gallery-open img { display: block; width: 100%; height: auto; transition: transform var(--duration-base) var(--ease-out); }
+.gallery-open:hover img { transform: scale(1.04); }
+.gallery-open:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* The photo viewer */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #111111f2;
+  color: #fff;
+}
+.lightbox[open] { display: flex; align-items: center; justify-content: center; padding: var(--space-5) var(--space-8); }
+.lightbox::backdrop { background: transparent; }
+.lightbox-figure { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); max-width: 100%; margin: 0; }
+.lightbox-figure img { width: auto; max-width: 100%; height: auto; max-height: calc(100vh - 8rem); max-height: calc(100dvh - 8rem); object-fit: contain; border-radius: var(--radius-md); }
+.lightbox-figure figcaption { color: #e8e4dd; font-size: var(--text-small); line-height: 1.5; text-align: center; }
+.lightbox-button {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid #ffffff40;
+  border-radius: var(--radius-pill);
+  background: #ffffff14;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-in-out), color var(--duration-fast) var(--ease-in-out);
+}
+.lightbox-button:hover { border-color: var(--gold-on-dark); background: var(--gold-on-dark); color: var(--text); }
+.lightbox-button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.lightbox-close { top: var(--space-4); right: var(--space-4); }
+.lightbox-prev { left: var(--space-4); top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: var(--space-4); top: 50%; transform: translateY(-50%); }
+
+.about-journey { margin-top: var(--space-9); }
+
+/* Cropped to the dancer, so the photo's floor and corners don't show as a box */
+.leap-photo { aspect-ratio: 600 / 660; object-fit: cover; object-position: 50% 42%; }
+
+.about-cta { text-align: center; }
+.about-cta .btn { margin-top: var(--space-5); }
+
+/* ==========================================================================
+   Journey
+   ========================================================================== */
+
+.journey-panel { background: var(--surface-2); border-radius: var(--radius-xl); }
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--space-7);
+  align-items: center;
+  margin-top: var(--space-7);
+}
+
+/* The seated dancer, cut at the floor line, with a short mirrored reflection below */
+.seated-figure img {
+  width: 100%;
+  aspect-ratio: 960 / 908;
+  object-fit: cover;
+  object-position: top;
+}
+.seated-figure > img {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 2.5%, #000 98%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 6%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 2.5%, #000 98%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 6%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+/* The reflection runs to the bottom edge of the grey panel, so the panel has no bottom padding here */
+#journey { padding-bottom: 0; overflow: hidden; }
+#journey .journey-grid { align-items: stretch; }
+#journey .journey-list { align-self: center; padding-bottom: var(--space-9); }
+.seated-figure { display: flex; flex-direction: column; margin: 0; }
+.seated-reflection {
+  position: relative; /* its image sits out of flow, so it fills the panel without making it taller */
+  flex: 1;
+  overflow: hidden;
+  opacity: 0.35;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
+}
+.seated-reflection img { position: absolute; top: 0; left: 0; transform: scaleY(-1); filter: blur(0.6px); }
+
+.journey-list li {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 9.5rem) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: baseline;
+  padding-block: 1.125rem;
+  border-top: 1px solid var(--stroke);
+}
+.journey-list li:last-child { border-bottom: 1px solid var(--stroke); }
+.journey-list .label { color: var(--text-3); }
+.journey-name { color: var(--text); font-family: var(--font-display); font-size: 1.5rem; letter-spacing: -0.01em; line-height: 1.2; }
+.journey-text { color: var(--text-2); }
+
+/* ==========================================================================
+   Instagram
+   ========================================================================== */
+
+.ig-frame { max-width: 44rem; margin: var(--space-6) auto 0; overflow: hidden; }
+.ig-frame iframe { width: 100%; height: 640px; border: 0; }
+.ig-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2); margin-top: var(--space-5); }
+
+/* A strip of photos that slides on its own and stops when the pointer comes near.
+   The vertical padding widens the area that counts as near. */
+.ig-carousel { --ig-tile: 280px; margin-top: var(--space-4); overflow: hidden; padding-block: var(--space-5); }
+
+.ig-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: ig-slide var(--ig-duration, 60s) linear infinite;
+}
+@keyframes ig-slide { to { transform: translateX(-50%); } }
+
+.ig-carousel:hover .ig-track,
+.ig-carousel:focus-within .ig-track,
+.ig-carousel.is-paused .ig-track { animation-play-state: paused; }
+
+.ig-tile { flex: none; width: var(--ig-tile); padding-inline: var(--space-2); }
+.ig-tile a { display: block; overflow: hidden; aspect-ratio: 3 / 4; border-radius: var(--radius-lg); background: var(--surface-3); }
+.ig-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--duration-base) var(--ease-out); }
+.ig-tile a:hover img, .ig-tile a:focus-visible img { transform: scale(1.03); }
+.ig-tile a:focus-visible { outline-offset: -4px; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer { padding-block: var(--space-8) var(--space-6); color: var(--text-inverse-2); }
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-bottom: var(--space-7);
+}
+.footer-name {
+  max-width: 34rem;
+  color: var(--text-inverse);
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.footer .btn-secondary { background: var(--text-inverse); }
+.footer .btn-secondary:hover { background: #fff; }
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid #ffffff1f;
+  font-size: var(--text-small);
+}
+.footer-contact { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); }
+.footer-contact a { color: var(--text-inverse); text-underline-offset: 3px; }
+
+/* Phones: a thin lotus rosette, cropped by the page bottom */
+.footer-rosette { display: none; }
+.footer-rosette svg { width: 100%; height: auto; }
+
+/* ==========================================================================
+   Gold line illustrations: background details in section corners and beside headings.
+   Strength and position live here. The artwork is in images/.
+   ========================================================================== */
+
+.hero, .register, #journey, #instagram, .about-head, .about-cta, .footer { position: relative; isolation: isolate; }
+
+/* A patch of the repeating tile, fading out from a corner */
+.register::before, .about-cta::before, .footer::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  background: url("../images/pattern-tile.svg") 0 0 / 108px 108px;
+  opacity: var(--o, 0.8);
+  animation: pattern-breathe 9s ease-in-out infinite alternate;
+}
+
+.register::before {
+  left: calc((100% - 100vw) / 2);
+  bottom: calc(var(--space-9) * -0.5);
+  width: min(40vw, 34rem);
+  height: 26rem;
+  --o: 0.9;
+  -webkit-mask-image: radial-gradient(circle at 0% 100%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle at 0% 100%, #000 0%, transparent 72%);
+}
+
+/* The gold temple carving in the top-left corner of the learning stages panel */
+.journey-bracket {
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-5);
+  width: clamp(110px, 15vw, 190px);
+  pointer-events: none;
+}
+
+.about-cta::before {
+  right: calc((100% - 100vw) / 2);
+  bottom: 0;
+  width: min(40vw, 30rem);
+  height: 100%;
+  --o: 0.9;
+  -webkit-mask-image: radial-gradient(circle at 100% 100%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle at 100% 100%, #000 0%, transparent 72%);
+}
+
+.footer { overflow: hidden; }
+.footer::before {
+  top: 0;
+  right: 0;
+  width: min(46%, 38rem);
+  height: 100%;
+  --o: 0.75;
+  filter: brightness(1.5);
+  -webkit-mask-image: radial-gradient(circle at 100% 0%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle at 100% 0%, #000 0%, transparent 72%);
+}
+
+/* Single motifs either side of a centred heading, turning very slowly */
+#instagram::before, #instagram::after, .about-head::before, .about-head::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: clamp(9rem, 14vw, 13rem);
+  aspect-ratio: 1;
+  opacity: 0.95;
+  pointer-events: none;
+  background: center / contain no-repeat;
+  animation: motif-turn 120s linear infinite;
+}
+#instagram::before { top: var(--space-8); left: 4vw; background-image: url("../images/motif-flower.svg"); }
+#instagram::after { top: var(--space-8); right: 4vw; background-image: url("../images/motif-lace.svg"); }
+.about-head::before { top: var(--space-7); left: 0; background-image: url("../images/motif-petals.svg"); }
+.about-head::after { top: var(--space-7); right: 0; background-image: url("../images/motif-quatrefoil.svg"); }
+
+/* ==========================================================================
+   Motion: quiet and unhurried. Everything here stops under reduced motion.
+   ========================================================================== */
+
+@keyframes pattern-breathe { to { opacity: calc(var(--o, 0.8) * 0.68); } }
+@keyframes motif-turn { to { transform: rotate(360deg); } }
+@keyframes rise-in { from { opacity: 0; transform: translateY(16px); } }
+@keyframes photo-in { from { opacity: 0; transform: translateX(18px); } }
+
+/* On load: the opening text rises in, line by line, and the dancer eases in.
+   The animate-in class is set in each page's head, only when the page is visible. */
+.animate-in .hero-text > *, .animate-in .about-head > * { animation: rise-in 0.9s var(--ease-out) both; }
+.hero-text > :nth-child(2), .about-head > :nth-child(2) { animation-delay: 0.1s; }
+.hero-text > :nth-child(3), .about-head > :nth-child(3) { animation-delay: 0.2s; }
+.hero-text > :nth-child(4), .about-head > :nth-child(4) { animation-delay: 0.3s; }
+.hero-text > :nth-child(5) { animation-delay: 0.4s; }
+.animate-in .hero-pillar { animation: rise-in 1.2s var(--ease-out) both; }
+.animate-in .hero-photo img { animation: photo-in 1.4s var(--ease-out) 0.15s both; }
+
+/* On scroll: main.js adds these only when it's running, so nothing stays hidden without it */
+.reveal:not(.reveal-hidden) { transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+.reveal-hidden { opacity: 0; transform: translateY(18px); }
+.journey-list li.reveal:nth-child(2) { transition-delay: 0.06s; }
+.journey-list li.reveal:nth-child(3) { transition-delay: 0.12s; }
+.journey-list li.reveal:nth-child(4) { transition-delay: 0.18s; }
+.journey-list li.reveal:nth-child(5) { transition-delay: 0.24s; }
+.journey-list li.reveal:nth-child(6) { transition-delay: 0.3s; }
+.about-card.reveal:nth-child(2) { transition-delay: 0.1s; }
+
+/* ==========================================================================
+   Small screens
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  /* The side motifs would crowd the headings on small screens, so only the corner patches stay */
+  #instagram::before, #instagram::after, .about-head::before, .about-head::after { display: none; }
+  .register::before { left: 0; bottom: 0; width: 70vw; height: 16rem; }
+
+  :root { --nav-height: 106px; }
+
+  /* On phones the logo and the two buttons share the top row, and the page links sit on a second row */
+  .nav-inner { display: flex; flex-wrap: wrap; align-content: center; justify-content: space-between; gap: 0 var(--space-3); }
+  .nav-links { order: 3; width: 100%; gap: var(--space-5); }
+  .nav-links a { padding-block: var(--space-2); }
+
+  .hero { display: block; min-height: 0; }
+  .hero-inner { padding-block: var(--space-6) 0; }
+  /* The pillar is large background art here, with the text layered on top at full width */
+  .hero { --pillar-edge: 0.5rem; }
+  .hero-text { width: auto; }
+  /* Softer lines keep the text easy to read. Order, back to front: photo, pillar, text. */
+  .hero-photo { z-index: 0; }
+  .hero-pillar { z-index: 1; opacity: 0.18; top: var(--pillar-edge); bottom: auto; width: var(--pillar-w); height: auto; }
+  .hero-inner { z-index: 2; }
+  .hero-photo { position: relative; inset: auto; overflow: hidden; height: 112vw; max-height: 720px; margin-top: calc(var(--space-6) * -1); }
+  .hero-photo img {
+    right: 0;
+    height: 118%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 26%), linear-gradient(180deg, transparent 16%, #000 23%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 26%), linear-gradient(180deg, transparent 16%, #000 23%, #000 86%, transparent 100%);
+  }
+
+  .register-grid { grid-template-columns: minmax(0, 1fr); }
+  .register-intro { position: static; }
+
+  .about-cards { grid-template-columns: minmax(0, 1fr); }
+  .tutor-card { grid-template-columns: minmax(0, 1fr); }
+  .tutor-portrait { width: min(100%, 18rem); }
+  .gallery-grid { margin-top: var(--space-6); }
+  .lightbox[open] { padding: var(--space-8) var(--space-3); }
+  .lightbox-prev, .lightbox-next { top: auto; bottom: var(--space-4); transform: none; }
+  .lightbox-prev { left: calc(50% - 56px); }
+  .lightbox-next { right: calc(50% - 56px); }
+  .location-grid { grid-template-columns: minmax(0, 1fr); margin-top: var(--space-6); }
+  .locations { padding-top: var(--space-7); }
+
+  .journey-panel { border-radius: var(--radius-lg); }
+  .journey-grid { grid-template-columns: minmax(0, 1fr); }
+  .journey-photo, .seated-figure { width: min(85%, 24rem); margin-inline: auto; }
+  #journey .journey-list { padding-bottom: 0; }
+  /* The carving is large background art here, with the text layered on top */
+  .journey-bracket { top: var(--space-3); left: var(--space-3); width: clamp(180px, 56vw, 300px); opacity: 0.18; }
+  #journey > .wrap { position: relative; z-index: 1; }
+  .seated-reflection { flex: none; aspect-ratio: 960 / 420; }
+  .journey-list li { grid-template-columns: 2.25rem minmax(0, 1fr); gap: var(--space-1) var(--space-2); }
+  .journey-text { grid-column: 2; }
+
+  .footer { padding-bottom: 0; }
+  /* Full width and shorter, so the pattern fades out softly and stays faint behind the text */
+  .footer::before { width: 100%; height: 22rem; --o: 0.3; }
+  .footer-bottom { padding-bottom: var(--space-6); }
+  .footer-rosette { display: block; overflow: hidden; aspect-ratio: 3 / 2; }
+}
+
+@media (max-width: 520px) {
+  .gallery-grid { --gallery-gap: var(--space-2); columns: 2; }
+  .form-grid { grid-template-columns: minmax(0, 1fr); }
+  .nav-actions .btn { min-height: 40px; padding-inline: 0.875rem; font-size: 0.875rem; }
+  .choice { flex-basis: 100%; }
+  .choice-short .choice { flex-basis: 0; }
+  .choice-short .choice span { padding-inline: 0.375rem; font-size: 0.875rem; }
+  .ig-actions .btn, .footer-top .btn { width: 100%; }
+  .ig-carousel { --ig-tile: 220px; }
+}
+
+/* ==========================================================================
+   Sound button. The music plays by default. The button shows a speaker while it plays,
+   "Stop" when hovered, a muted speaker once stopped, and "Play" when hovered.
+   ========================================================================== */
+
+.sound-toggle {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  height: 44px;
+  min-width: 44px;
+  padding: 0 11px;
+  overflow: hidden;
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-pill);
+  background: #ffffffeb;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
+  color: var(--text-2);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-in-out), color var(--duration-fast) var(--ease-in-out), border-color var(--duration-fast) var(--ease-in-out);
+}
+.sound-toggle svg { flex: none; }
+.sound-toggle[aria-pressed="true"] { border-color: var(--gold-on-dark); background: var(--gold-on-dark); color: var(--text); }
+
+/* Only one icon shows at a time */
+.sound-toggle [class^="ic-"] { display: none; }
+.sound-toggle[aria-pressed="true"] .ic-playing,
+.sound-toggle[aria-pressed="false"] .ic-muted { display: inline; }
+
+/* The label slides out beside the icon on hover and keyboard focus, on screens that have a pointer */
+.sound-label {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  white-space: nowrap;
+  transition: max-width var(--duration-base) var(--ease-out), opacity var(--duration-fast) var(--ease-in-out), margin var(--duration-base) var(--ease-out);
+}
+.sound-toggle:focus-visible .sound-label { max-width: 6rem; margin-left: 0.5rem; margin-right: 0.25rem; opacity: 1; }
+.sound-toggle:focus-visible[aria-pressed="true"] .ic-playing,
+.sound-toggle:focus-visible[aria-pressed="false"] .ic-muted { display: none; }
+.sound-toggle:focus-visible[aria-pressed="true"] .ic-stop,
+.sound-toggle:focus-visible[aria-pressed="false"] .ic-play { display: inline; }
+
+@media (hover: hover) {
+  .sound-toggle:hover { border-color: var(--gold-on-dark); color: var(--text); }
+  .sound-toggle:hover .sound-label { max-width: 6rem; margin-left: 0.5rem; margin-right: 0.25rem; opacity: 1; }
+  .sound-toggle:hover[aria-pressed="true"] .ic-playing,
+  .sound-toggle:hover[aria-pressed="false"] .ic-muted { display: none; }
+  .sound-toggle:hover[aria-pressed="true"] .ic-stop,
+  .sound-toggle:hover[aria-pressed="false"] .ic-play { display: inline; }
+}
+
+/* Very narrow phones: a slightly smaller logo and buttons keep them all on one row */
+@media (max-width: 360px) {
+  .brand { font-size: 1.125rem; }
+  .brand img { width: 24px; height: 24px; }
+  .nav-actions { gap: 0.375rem; }
+  .nav-actions .btn { padding-inline: 0.625rem; font-size: 0.8125rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .register::before, .about-cta::before, .footer::before,
+  #instagram::before, #instagram::after, .about-head::before, .about-head::after { animation: none; }
+
+  /* No movement: the strip becomes a row people scroll themselves */
+  .ig-carousel { overflow-x: auto; }
+  .ig-track { animation: none; }
+  .ig-clone, .ig-pause { display: none !important; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
+}

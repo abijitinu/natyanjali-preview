@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Natyanjali Nṛtta Kalakshetra</title>
+  <meta name="description" content="Contact Natyanjali Nṛtta Kalakshetra, a Bharatanatyam dance school with classes in Kakkanad, Chalakudy and Potta, Kerala.">
+  <meta property="og:title" content="Contact Natyanjali Nṛtta Kalakshetra">
+  <meta property="og:description" content="Bharatanatyam classes in Kakkanad, Chalakudy and Potta, Kerala.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#fcfcfc">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Figtree:wght@300..700&family=Manjari:wght@400&family=Newsreader:opsz,wght@6..72,400&display=swap">
+  <script>
+    // Opening animations only run on a visible page. They finish in under 2 seconds, so the
+    // class always comes off at 2.5: if they ever stall, the text still appears.
+    if (document.visibilityState === "visible" && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("animate-in");
+      setTimeout(function () { document.documentElement.classList.remove("animate-in"); }, 2500);
+    }
+  </script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="index.html" aria-label="Natyanjali, home">
+          <img src="favicon.svg" alt="" width="28" height="28">
+          Natyanjali
+        </a>
+        <nav class="nav-links" aria-label="Pages">
+          <a href="about.html">About</a>
+          <a href="gallery.html">Gallery</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="index.html#register">Register</a>
+          <a class="btn btn-primary" href="contact.html" aria-current="page">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="wrap about-head">
+        <div class="ornament" aria-hidden="true">
+          <img src="images/ornament-gold.png" alt="" width="390" height="352">
+        </div>
+        <h1 class="display">Contact us</h1>
+        <p class="hero-malayalam" lang="ml">നാട്യാഞ്ജലി നൃത്ത കലാക്ഷേത്ര</p>
+        <p class="lede">Questions about classes, timings or fees? Send us a message, or visit any of our three locations.</p>
+      </section>
+
+      <section class="wrap about-cards contact-top" aria-label="Ways to reach us">
+        <article class="card about-card">
+          <p class="label">Reach us</p>
+          <h2 class="title">Get in touch</h2>
+          <dl class="contact-list" id="contact-list">
+            <div>
+              <dt class="label">Register</dt>
+              <dd><a href="index.html#register">Fill in the registration form</a></dd>
+            </div>
+            <div>
+              <dt class="label">Visit</dt>
+              <dd><a href="#locations">See our three locations</a></dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="card about-card contact-form-card" id="message-card">
+          <p class="label">Message us</p>
+          <h2 class="title">Send us a message</h2>
+          <form id="message-form" novalidate>
+            <div class="form-grid">
+              <div class="field span-2" data-field="name">
+                <label class="field-label" for="msgName">Your name</label>
+                <input class="input" id="msgName" name="name" type="text" autocomplete="name" maxlength="120" required>
+                <p class="field-error" hidden></p>
+              </div>
+
+              <div class="field" data-field="phone">
+                <label class="field-label" for="msgPhone">Phone number</label>
+                <input class="input" id="msgPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" required>
+                <p class="field-error" hidden></p>
+              </div>
+
+              <div class="field" data-field="email">
+                <label class="field-label" for="msgEmail">Email <span class="optional">(optional)</span></label>
+                <input class="input" id="msgEmail" name="email" type="email" autocomplete="email" maxlength="160">
+                <p class="field-error" hidden></p>
+              </div>
+
+              <div class="field span-2" data-field="location">
+                <label class="field-label" for="msgLocation">Which location is it about? <span class="optional">(optional)</span></label>
+                <select class="input" id="msgLocation" name="location">
+                  <option value="">Not sure yet</option>
+                </select>
+              </div>
+
+              <div class="field span-2" data-field="message">
+                <label class="field-label" for="msgText">Your message</label>
+                <textarea class="input" id="msgText" name="message" rows="4" maxlength="1000" required></textarea>
+                <p class="field-error" hidden></p>
+              </div>
+
+              <div class="trap" aria-hidden="true">
+                <label for="msgWebsite">Leave this empty</label>
+                <input id="msgWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="field span-2" data-field="consent">
+                <label class="consent">
+                  <input type="checkbox" id="msgConsent" name="consent" required>
+                  <span>I agree that Natyanjali Nṛtta Kalakshetra can keep these details and contact me about my message.</span>
+                </label>
+                <p class="field-error" hidden></p>
+              </div>
+
+              <div class="form-alert span-2" id="message-alert" role="alert" hidden></div>
+
+              <div class="span-2">
+                <button class="btn btn-primary btn-large btn-block is-waiting" id="message-submit" type="submit">Send message</button>
+              </div>
+            </div>
+          </form>
+
+          <div class="done" id="message-done" tabindex="-1" hidden>
+            <div class="done-check" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+            </div>
+            <h3 class="heading" id="message-done-title"></h3>
+            <p id="message-done-text"></p>
+            <div class="done-actions">
+              <a class="btn btn-primary" id="message-whatsapp" target="_blank" rel="noopener" hidden>Send on WhatsApp</a>
+              <button class="btn btn-secondary" id="message-again" type="button">Send another message</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section wrap locations" id="locations" aria-labelledby="locations-title">
+        <div class="section-head">
+          <p class="label">Class locations</p>
+          <h2 class="title" id="locations-title">Where we teach</h2>
+          <p class="lede">We teach at three places. Choose the one nearest you, and tap Get directions to open the route in Maps.</p>
+        </div>
+        <div class="location-grid" id="location-grid">
+          <noscript><p class="lede">Kakkanad, Chalakudy and Potta, Kerala.</p></noscript>
+        </div>
+      </section>
+
+      <section class="section wrap about-cta" aria-labelledby="join-title">
+        <h2 class="title" id="join-title">Join the class</h2>
+        <a class="btn btn-primary btn-large" href="index.html#register">Register to join</a>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <p class="footer-name">Natyanjali Nṛtta Kalakshetra</p>
+        <a class="btn btn-secondary btn-large" href="index.html#register">Register to join</a>
+      </div>
+      <div class="footer-bottom">
+        <ul class="footer-contact" id="footer-contact">
+          <li id="footer-address">Kerala, India</li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><a id="footer-instagram" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+        <span>&copy; <span id="year">2026</span> Natyanjali Nṛtta Kalakshetra</span>
+      </div>
+    </div>
+    <div class="footer-rosette" aria-hidden="true">
+      <svg id="rosette" viewBox="0 0 1000 1000"></svg>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/music.js"></script>
+</body>
+</html>
