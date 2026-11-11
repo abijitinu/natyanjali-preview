@@ -566,14 +566,25 @@
     var inquiry = safeUrl(config.inquiryUrl);
     var builtIn = document.getElementById("admission-builtin");
     var external = document.getElementById("admission-external");
-    // With an admission link, the Register section shows a button to that form instead of our own form
+    // With an admission link, the Register section is one button to that form, not our own form
     if (admission && builtIn && external) {
       builtIn.hidden = true;
       external.hidden = false;
       document.getElementById("admission-open").href = admission;
     }
-    // Every "Ask a question" button goes to the enquiry form, if there is one
     if (inquiry) {
+      // On the Contact page, the message form becomes one button to the enquiry form
+      var messageForm = document.getElementById("message-form");
+      var enquiryBox = document.getElementById("enquiry-external");
+      if (messageForm && enquiryBox) {
+        messageForm.hidden = true;
+        var doneBox = document.getElementById("message-done");
+        if (doneBox) doneBox.hidden = true;
+        enquiryBox.hidden = false;
+        document.getElementById("enquiry-open").href = inquiry;
+        document.getElementById("message-title").textContent = "Ask us a question";
+      }
+      // Every "Ask a question" button goes straight to the enquiry form
       document.querySelectorAll("[data-inquiry]").forEach(function (link) {
         link.href = inquiry;
         link.target = "_blank";

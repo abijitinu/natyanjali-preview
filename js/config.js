@@ -19,11 +19,11 @@ window.NATYANJALI = {
   whatsapp: "",
 
   // The links to your admission form and your enquiry form (from your admissions app).
-  //   admissionUrl: the Register section shows a button to this form, instead of the built-in form.
-  //   inquiryUrl:   every "Ask a question" button opens this form. Without it, they go to the
-  //                 message form on the Contact page.
-  admissionUrl: "",
-  inquiryUrl: "",
+  //   admissionUrl: the Register section is one button that opens this form in a new tab, instead of the built-in form.
+  //   inquiryUrl:   every "Ask a question" button, and the button on the Contact page, open this form in a new tab.
+  //                 Without it, the Contact page has our own message form.
+  admissionUrl: "https://tufee.codedbypatel.com/admission/7IOQ4S",
+  inquiryUrl: "https://tufee.codedbypatel.com/enquiry/7IOQ4S",
 
   // One line at the very top of every page, for things like "Admissions are open for the new academic
   // year." Leave it as "" to show nothing. The link is optional, like "classes.html".
