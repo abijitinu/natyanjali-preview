@@ -18,6 +18,20 @@ window.NATYANJALI = {
   // WhatsApp number with country code and no spaces, like "919XXXXXXXXX".
   whatsapp: "",
 
+  // The school's public phone number, as listed on its Google Maps page.
+  phone: "+91 62826 45865",
+
+  // Google reviews. The home page shows the rating and a button to read the reviews on Google.
+  // Update the rating and count now and then. Leave googleReviewsUrl as "" to hide the section.
+  googleReviewsUrl: "https://maps.app.goo.gl/mmk3zCq8bppAyDqNA",
+  googleRating: "5.0",
+  googleReviewCount: 80,
+
+  // Testimonials shown on the home page under the rating. Add each one with the family's
+  // permission, in the same wording they gave, like:
+  //   { quote: "Words from the family.", name: "Parent of a student", detail: "Kakkanad" },
+  testimonials: [],
+
   // The links to your admission form and your enquiry form (from your admissions app).
   //   admissionUrl: the Register section is one button that opens this form in a new tab, instead of the built-in form.
   //   inquiryUrl:   every "Ask a question" button, and the button on the Contact page, open this form in a new tab.
@@ -33,7 +47,6 @@ window.NATYANJALI = {
 
   // Phone and email show on the Contact page and in the footer.
   // WhatsApp above also shows on the Contact page. The address is footer only.
-  phone: "",
   email: "",
   address: "Kakkanad (Kochi) and Potta (Chalakudy), Kerala",
 
@@ -48,7 +61,14 @@ window.NATYANJALI = {
       name: "Kakkanad",
       address: "Natyanjali Nṛtta Kalakshetra, AKG Road, Vikasavani, Thengode P.O, Kochi",
       map: "Natyanjali Nrtta Kalakshetra, Vikasavani, AKG Rd, Thengod, Kochi 682030",
-      directions: "https://maps.app.goo.gl/FAgqTr89zSoRQ1wdA"
+      directions: "https://maps.app.goo.gl/FAgqTr89zSoRQ1wdA",
+      // Opening hours of the centre, as listed on Google Maps.
+      hours: [
+        ["Monday", "9 am – 8 pm"],
+        ["Tuesday, Wednesday", "9 am – 6:30 pm"],
+        ["Thursday, Friday", "9 am – 7:30 pm"],
+        ["Saturday, Sunday", "9 am – 6:30 pm"]
+      ]
     },
     {
       name: "Potta",

@@ -75,9 +75,26 @@
         action.setAttribute("aria-label", "Get directions to our " + place.name + " centre");
       }
 
+      var hours = null;
+      if (Array.isArray(place.hours) && place.hours.length) {
+        hours = document.createElement("dl");
+        hours.className = "location-hours";
+        place.hours.forEach(function (row) {
+          var line = document.createElement("div");
+          var days = document.createElement("dt");
+          var time = document.createElement("dd");
+          days.textContent = row[0];
+          time.textContent = row[1];
+          line.appendChild(days);
+          line.appendChild(time);
+          hours.appendChild(line);
+        });
+      }
+
       body.appendChild(number);
       body.appendChild(name);
       if (place.address) body.appendChild(address);
+      if (hours) body.appendChild(hours);
       body.appendChild(action);
       card.appendChild(visual);
       card.appendChild(body);

@@ -1031,3 +1031,21 @@ select.input {
   *, *::before, *::after { transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
 }
 .batch-head strong { color: var(--text); font-weight: 600; }
+
+/* Opening hours on a location card */
+.location-hours { margin-bottom: var(--space-3); border-top: 1px solid var(--stroke); }
+.location-hours div { display: flex; justify-content: space-between; gap: var(--space-3); padding-block: 0.4rem; border-bottom: 1px solid var(--stroke); font-size: var(--text-small); color: var(--text-2); }
+.location-hours dd { white-space: nowrap; }
+
+/* Google rating and testimonials */
+.reviews .section-head { margin-bottom: var(--space-5); }
+.rating-card { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-3) var(--space-6); padding: var(--space-5) var(--space-6); box-shadow: var(--shadow-card); }
+.rating-score { display: flex; align-items: baseline; gap: var(--space-3); font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 3.5rem); line-height: 1; letter-spacing: -0.02em; }
+.rating-stars { color: var(--gold-on-dark); font-family: var(--font-body); font-size: 1.25rem; letter-spacing: 0.15em; }
+.rating-text { color: var(--text-2); font-size: var(--text-lede); }
+.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--space-4); margin-top: var(--space-4); }
+.testimonial-grid:empty { display: none; }
+.testimonial { padding: var(--space-5); margin: 0; box-shadow: var(--shadow-card); }
+.testimonial blockquote { margin: 0 0 var(--space-3); font-family: var(--font-display); font-size: 1.2rem; line-height: 1.45; color: var(--text); }
+.testimonial figcaption { color: var(--text-3); font-size: var(--text-small); }
+@media (max-width: 600px) { .rating-card { padding: var(--space-5); text-align: center; } }

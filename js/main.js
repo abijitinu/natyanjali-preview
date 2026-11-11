@@ -593,6 +593,43 @@
     }
   }
 
+  function initReviews() {
+    var section = document.getElementById("reviews");
+    if (!section) return;
+    var url = safeUrl(config.googleReviewsUrl);
+    var items = Array.isArray(config.testimonials) ? config.testimonials.filter(function (t) { return t && t.quote; }) : [];
+    if (!url && !items.length) return;
+    section.hidden = false;
+
+    var card = section.querySelector(".rating-card");
+    var rating = Number(config.googleRating);
+    var count = Number(config.googleReviewCount);
+    if (url && rating > 0) {
+      document.getElementById("rating-number").textContent = rating.toFixed(1);
+      document.getElementById("rating-text").textContent = "Rated on Google" + (count > 0 ? " by " + count + " people" : "");
+      document.getElementById("reviews-link").href = url;
+    } else if (url) {
+      document.getElementById("rating-number").parentNode.hidden = true;
+      document.getElementById("rating-text").hidden = true;
+      document.getElementById("reviews-link").href = url;
+    } else {
+      card.hidden = true;
+    }
+
+    var grid = document.getElementById("testimonial-grid");
+    items.forEach(function (t) {
+      var figure = document.createElement("figure");
+      figure.className = "card testimonial";
+      var quote = document.createElement("blockquote");
+      quote.textContent = String(t.quote);
+      var who = document.createElement("figcaption");
+      who.textContent = [t.name, t.detail].filter(Boolean).join(" · ");
+      figure.appendChild(quote);
+      figure.appendChild(who);
+      grid.appendChild(figure);
+    });
+  }
+
   function initAnnouncement() {
     var text = String(config.announcement || "").trim();
     var page = document.querySelector(".page");
@@ -638,6 +675,7 @@
   initLinks();
   initAnnouncement();
   initHeroContact();
+  initReviews();
   initContactList();
   if (form) {
     initForm();
