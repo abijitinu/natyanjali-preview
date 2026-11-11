@@ -593,6 +593,36 @@
     }
   }
 
+  // The phone menu: the button opens a panel with the page links, Register and Contact
+  function initNav() {
+    var nav = document.querySelector(".nav");
+    var button = nav && nav.querySelector(".nav-toggle");
+    var menu = document.getElementById("nav-menu");
+    if (!button || !menu) return;
+    var wide = window.matchMedia("(min-width: 861px)");
+
+    function setOpen(open, returnFocus) {
+      nav.classList.toggle("is-open", open);
+      button.setAttribute("aria-expanded", open ? "true" : "false");
+      button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      if (!open && returnFocus) button.focus();
+    }
+
+    button.addEventListener("click", function () { setOpen(!nav.classList.contains("is-open")); });
+    // Choosing a link on the same page (like Register) closes the menu
+    menu.addEventListener("click", function (event) {
+      if (event.target.closest("a")) setOpen(false);
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && nav.classList.contains("is-open")) setOpen(false, true);
+    });
+    document.addEventListener("click", function (event) {
+      if (nav.classList.contains("is-open") && !nav.contains(event.target)) setOpen(false);
+    });
+    function onWide() { if (wide.matches) setOpen(false); }
+    if (wide.addEventListener) wide.addEventListener("change", onWide); else wide.addListener(onWide);
+  }
+
   function initReviews() {
     var section = document.getElementById("reviews");
     if (!section) return;
@@ -672,6 +702,7 @@
   }
 
   buildRosette();
+  initNav();
   initLinks();
   initAnnouncement();
   initHeroContact();

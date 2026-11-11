@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Figtree:wght@300..700&family=Manjari:wght@400&family=Newsreader:opsz,wght@6..72,400&display=swap">
   <script>
+    document.documentElement.classList.add("js");
     // Opening animations only run on a visible page. They finish in under 2 seconds, so the
     // class always comes off at 2.5: if they ever stall, the text still appears.
     if (document.visibilityState === "visible" && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -22,8 +23,8 @@
       setTimeout(function () { document.documentElement.classList.remove("animate-in"); }, 2500);
     }
   </script>
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/tokens.css?v=2">
+  <link rel="stylesheet" href="css/site.css?v=2">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -35,14 +36,19 @@
           <img src="images/logo.png" alt="" width="22" height="42">
           Natyanjali
         </a>
-        <nav class="nav-links" aria-label="Pages">
-          <a href="about.html">About</a>
-          <a href="classes.html" aria-current="page">Classes</a>
-          <a href="gallery.html">Gallery</a>
-        </nav>
-        <div class="nav-actions">
-          <a class="btn btn-secondary" href="index.html#register">Register</a>
-          <a class="btn btn-primary" href="contact.html">Contact</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+          <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+        <div class="nav-menu" id="nav-menu">
+          <nav class="nav-links" aria-label="Pages">
+            <a href="about.html">About</a>
+            <a href="classes.html" aria-current="page">Classes</a>
+            <a href="gallery.html">Gallery</a>
+          </nav>
+          <div class="nav-actions">
+            <a class="btn btn-secondary" href="index.html#register">Register</a>
+            <a class="btn btn-primary" href="contact.html">Contact</a>
+          </div>
         </div>
       </div>
     </header>
@@ -217,8 +223,8 @@
     </div>
   </footer>
 
-  <script src="js/config.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/music.js"></script>
+  <script src="js/config.js?v=2"></script>
+  <script src="js/main.js?v=2"></script>
+  <script src="js/music.js?v=2"></script>
 </body>
 </html>
