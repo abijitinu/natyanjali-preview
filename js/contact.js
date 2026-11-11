@@ -260,7 +260,7 @@
       setBusy(true);
       send(data)
         .then(function () {
-          showDone("Thank you, " + data.name, "We've received your message and will call you on " + data.phone + ".", "");
+          showDone("Thank you, " + data.name, "We've received your message and will get back to you on " + data.phone + " within 2 working days.", "");
         })
         .catch(function () {
           showAlert("We couldn't send your message. It's still here, so please try again.", fallbackLink(data));

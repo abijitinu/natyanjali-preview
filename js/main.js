@@ -296,7 +296,7 @@
       .then(function () {
         showDone(
           "Thank you, " + data.studentName,
-          "We've received your registration and will call you on " + data.phone + " to confirm the batch and timing.",
+          "We've received your registration and will call you on " + data.phone + " within 2 working days to confirm the batch and timing." + (data.email ? " A confirmation has also been sent to " + data.email + "." : ""),
           ""
         );
       })
