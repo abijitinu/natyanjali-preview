@@ -4,13 +4,13 @@
   var config = window.NATYANJALI || {};
 
   /* ------------------------------------------------------------------------
-     The footer rosette: two rings of 12 lotus petals, in fine gold line
+     The footer rosette: two rings of 12 lotus petals, in fine line, in the logo maroon
      ------------------------------------------------------------------------ */
   function buildRosette() {
     var svg = document.getElementById("rosette");
     var NS = "http://www.w3.org/2000/svg";
-    var STROKE = 1.25; // Stays this fine at any size, to match the other gold line artwork
-    var gold = getComputedStyle(document.documentElement).getPropertyValue("--gold-on-dark").trim();
+    var STROKE = 1.25; // Stays this fine at any size, to match the other line artwork
+    var lineColour = getComputedStyle(document.documentElement).getPropertyValue("--accent-on-dark").trim();
 
     function el(name, attrs, parent) {
       var node = document.createElementNS(NS, name);
@@ -28,7 +28,7 @@
         " C" + (500 - width) + " " + (near - span * 0.72) + " " + (500 - width) + " " + (near - span * 0.3) + " 500 " + near + "Z";
     }
 
-    var group = el("g", { fill: "none", stroke: gold, "stroke-width": STROKE, "stroke-linejoin": "round" }, svg);
+    var group = el("g", { fill: "none", stroke: lineColour, "stroke-width": STROKE, "stroke-linejoin": "round" }, svg);
     for (var i = 0; i < 12; i++) {
       el("path", { d: petal(170, 485, 118), transform: "rotate(" + i * 30 + " 500 500)", "vector-effect": "non-scaling-stroke" }, group);
       el("path", { d: petal(70, 300, 62), transform: "rotate(" + (i * 30 + 15) + " 500 500)", "vector-effect": "non-scaling-stroke" }, group);

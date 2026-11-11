@@ -33,7 +33,8 @@
   --danger: #b3261e;
 
   /* The footer rosette. The logo's disc in favicon.svg uses the same value. */
-  --gold-on-dark: #c9992e;
+  --accent: #5d0106;          /* the maroon of the school logo */
+  --accent-on-dark: #c4545b;  /* the same maroon, lifted so it shows on the dark footer and banner */
 
   /* Type families */
   --font-display: "Newsreader", "Noto Serif Malayalam", Georgia, serif;

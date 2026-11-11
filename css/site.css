@@ -93,7 +93,7 @@ img { height: auto; }
   line-height: 1.35;
 }
 
-/* The small gold ornament that sits above headings */
+/* The small ornament that sits above headings */
 .ornament {
   width: 76px;
   margin-inline: auto;
@@ -128,11 +128,11 @@ img { height: auto; }
   box-shadow: var(--shadow-button-primary);
   color: #fff;
 }
-/* On hover the button fills with gold and the text turns dark, which keeps it readable (about 6:1). */
+/* On hover the button fills with the logo maroon and the text stays white (about 15:1). */
 .btn-primary:hover:not(.is-waiting) {
-  background: var(--gold-on-dark);
+  background: var(--accent);
   box-shadow: none;
-  color: var(--text);
+  color: #fff;
 }
 
 .btn-secondary {
@@ -212,7 +212,7 @@ img { height: auto; }
 
 .hero-inner { position: relative; z-index: 1; padding-block: var(--space-7); }
 
-/* The gold temple pillar on the left balances the dancer on the right. Both are sized from the same
+/* The temple pillar on the left balances the dancer on the right. Both are sized from the same
    height (--hero-h) so the pillar always runs from her raised hand down to her feet. */
 .hero {
   --hero-h: min(calc(100svh - var(--nav-height)), 760px);
@@ -289,7 +289,7 @@ img { height: auto; }
 .register-intro { position: sticky; top: calc(var(--nav-height) + var(--space-6)); }
 .register-intro .lede { margin-top: var(--space-3); }
 
-/* A soft clearing, so the gold pattern passes around this text and not through it */
+/* A soft clearing, so the pattern passes around this text and not through it */
 .register-intro { background: var(--surface); box-shadow: 0 0 28px 28px var(--surface); }
 
 .next-steps-title { margin-top: var(--space-6); margin-bottom: var(--space-2); color: var(--text); font-size: var(--text-body); font-weight: var(--weight-medium); }
@@ -431,7 +431,7 @@ select.input {
   height: 52px;
   margin: 0 auto var(--space-4);
   border-radius: 50%;
-  background: linear-gradient(180deg, #d5650f 0%, #eaaf1c 100%);
+  background: var(--accent);
   color: #fff;
 }
 .done .heading { margin-bottom: var(--space-2); }
@@ -567,7 +567,7 @@ select.input {
   cursor: pointer;
   transition: background-color var(--duration-fast) var(--ease-in-out), color var(--duration-fast) var(--ease-in-out);
 }
-.lightbox-button:hover { border-color: var(--gold-on-dark); background: var(--gold-on-dark); color: var(--text); }
+.lightbox-button:hover { border-color: var(--accent-on-dark); background: var(--accent); color: #fff; }
 .lightbox-button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .lightbox-close { top: var(--space-4); right: var(--space-4); }
 .lightbox-prev { left: var(--space-4); top: 50%; transform: translateY(-50%); }
@@ -576,7 +576,7 @@ select.input {
 /* A line at the top of every page, set with `announcement` in js/config.js */
 .announcement { padding: var(--space-2) var(--gutter); background: var(--ink); color: #fff; font-size: var(--text-small); text-align: center; }
 .announcement p { margin: 0 auto; max-width: var(--page-max); }
-.announcement a { color: var(--gold-on-dark); font-weight: var(--weight-medium); text-underline-offset: 3px; }
+.announcement a { color: var(--accent-on-dark); font-weight: var(--weight-medium); text-underline-offset: 3px; }
 
 /* Home page hero: the "Since 2013" label, the two buttons and the Call / WhatsApp line */
 .since-label { margin-top: var(--space-2); color: var(--text-3); font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: 0.14em; text-transform: uppercase; }
@@ -601,7 +601,7 @@ select.input {
 .glance-card .label { color: var(--text-3); }
 .glance-card p:not(.label) { flex: 1; color: var(--text-2); }
 .glance-link { color: var(--text); font-weight: var(--weight-medium); text-decoration: underline; text-underline-offset: 4px; }
-.glance-card:hover { border-color: var(--gold-on-dark); transform: translateY(-2px); }
+.glance-card:hover { border-color: var(--accent); transform: translateY(-2px); }
 .glance-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
 /* Classes page */
@@ -792,7 +792,7 @@ select.input {
   mask-image: radial-gradient(circle at 0% 100%, #000 0%, transparent 72%);
 }
 
-/* The gold temple carving in the top-left corner of the learning stages panel */
+/* The temple carving in the top-left corner of the learning stages panel */
 .journey-bracket {
   position: absolute;
   top: var(--space-5);
@@ -981,7 +981,7 @@ select.input {
   transition: background-color var(--duration-fast) var(--ease-in-out), color var(--duration-fast) var(--ease-in-out), border-color var(--duration-fast) var(--ease-in-out);
 }
 .sound-toggle svg { flex: none; }
-.sound-toggle[aria-pressed="true"] { border-color: var(--gold-on-dark); background: var(--gold-on-dark); color: var(--text); }
+.sound-toggle[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: #fff; }
 
 /* Only one icon shows at a time */
 .sound-toggle [class^="ic-"] { display: none; }
@@ -1003,7 +1003,7 @@ select.input {
 .sound-toggle:focus-visible[aria-pressed="false"] .ic-play { display: inline; }
 
 @media (hover: hover) {
-  .sound-toggle:hover { border-color: var(--gold-on-dark); color: var(--text); }
+  .sound-toggle:hover { border-color: var(--accent); color: var(--text); }
   .sound-toggle:hover .sound-label { max-width: 6rem; margin-left: 0.5rem; margin-right: 0.25rem; opacity: 1; }
   .sound-toggle:hover[aria-pressed="true"] .ic-playing,
   .sound-toggle:hover[aria-pressed="false"] .ic-muted { display: none; }
@@ -1041,7 +1041,7 @@ select.input {
 .reviews .section-head { margin-bottom: var(--space-5); }
 .rating-card { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-3) var(--space-6); padding: var(--space-5) var(--space-6); box-shadow: var(--shadow-card); }
 .rating-score { display: flex; align-items: baseline; gap: var(--space-3); font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 3.5rem); line-height: 1; letter-spacing: -0.02em; }
-.rating-stars { color: var(--gold-on-dark); font-family: var(--font-body); font-size: 1.25rem; letter-spacing: 0.15em; }
+.rating-stars { color: var(--accent); font-family: var(--font-body); font-size: 1.25rem; letter-spacing: 0.15em; }
 .rating-text { color: var(--text-2); font-size: var(--text-lede); }
 .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--space-4); margin-top: var(--space-4); }
 .testimonial-grid:empty { display: none; }

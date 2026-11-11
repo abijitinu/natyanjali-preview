@@ -33,7 +33,7 @@
         visual = document.createElement("div");
         visual.className = "location-map location-online";
         var mark = document.createElement("img");
-        mark.src = "images/ornament-gold.png";
+        mark.src = "images/ornament.png";
         mark.alt = "";
         mark.width = 390;
         mark.height = 352;
