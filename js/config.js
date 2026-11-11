@@ -18,23 +18,50 @@ window.NATYANJALI = {
   // WhatsApp number with country code and no spaces, like "919XXXXXXXXX".
   whatsapp: "",
 
+  // The links to your admission form and your enquiry form (from your admissions app).
+  //   admissionUrl: the Register section shows a button to this form, instead of the built-in form.
+  //   inquiryUrl:   every "Ask a question" button opens this form. Without it, they go to the
+  //                 message form on the Contact page.
+  admissionUrl: "",
+  inquiryUrl: "",
+
+  // One line at the very top of every page, for things like "Admissions are open for the new academic
+  // year." Leave it as "" to show nothing. The link is optional, like "classes.html".
+  announcement: "",
+  announcementLink: "",
+  announcementLinkText: "See the classes",
+
   // Phone and email show on the Contact page and in the footer.
   // WhatsApp above also shows on the Contact page. The address is footer only.
   phone: "",
   email: "",
-  address: "Kakkanad, Chalakudy and Potta, Kerala",
+  address: "Kakkanad (Kochi) and Potta (Chalakudy), Kerala",
 
-  // The three class locations on the Contact page, one card with a map each.
+  // The places on the Contact page, one card each: two centres with a map, and Online.
   //   address: shown on the card.
-  //   map:     what the map is centred on. Use exact coordinates for a precise pin, like
-  //            "10.0159,76.3419" (in Google Maps, right-click the spot and tap the numbers to copy
-  //            them), or a place name that Google Maps can find.
-  // These are PLACEHOLDERS: well-known spots near each place, so the cards have something to show.
-  // Replace them with the real address and map point of each class before the site goes live.
+  //   map:     what the map is centred on. A place name that Google Maps can find, or exact coordinates
+  //            like "10.0159,76.3419" (in Google Maps, right-click the spot and tap the numbers to copy them).
+  //   directions (optional): the link the Get directions button opens. Without it, Google Maps routes to `map`.
+  //   online: true makes a card without a map, for the online classes.
   locations: [
-    { name: "Kakkanad", address: "Near Civil Station, Kakkanad, Kochi, Kerala", map: "Civil Station, Kakkanad, Kochi, Kerala" },
-    { name: "Chalakudy", address: "Near the railway station, Chalakudy, Thrissur, Kerala", map: "Chalakudy Railway Station, Kerala" },
-    { name: "Potta", address: "Potta, Chalakudy, Thrissur, Kerala", map: "Potta, Thrissur, Kerala" }
+    {
+      name: "Kakkanad",
+      address: "Natyanjali Nṛtta Kalakshetra, AKG Road, Vikasavani, Thengode P.O, Kochi",
+      map: "Natyanjali Nrtta Kalakshetra, Vikasavani, AKG Rd, Thengod, Kochi 682030",
+      directions: "https://maps.app.goo.gl/FAgqTr89zSoRQ1wdA"
+    },
+    {
+      name: "Potta",
+      address: "Natyanjali Nṛtta Kalakshetra, Near Dhanya Mission Hospital, Potta, Chalakudy",
+      map: "Dhanya Mission Hospital, Potta, Chalakudy, Kerala"
+    },
+    {
+      name: "Online",
+      online: true,
+      address: "Live classes over video for students in India and abroad. Timings are arranged by country and change with the season.",
+      link: "classes.html#online",
+      linkText: "See online batches"
+    }
   ],
 
   // The quiet background music (audio/tambura.mp3). It plays by default, and visitors can stop

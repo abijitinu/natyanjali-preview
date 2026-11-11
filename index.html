@@ -5,9 +5,9 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Natyanjali Nṛtta Kalakshetra | Bharatanatyam classes in Kerala</title>
-  <meta name="description" content="Register to learn Bharatanatyam at Natyanjali Nṛtta Kalakshetra, a dance school in Kerala since 2013, with classes in Kakkanad, Chalakudy and Potta.">
+  <meta name="description" content="Register to learn Bharatanatyam at Natyanjali Nṛtta Kalakshetra, a dance school in Kerala since 2013, with classes in Kakkanad and Potta, and online.">
   <meta property="og:title" content="Natyanjali Nṛtta Kalakshetra">
-  <meta property="og:description" content="Bharatanatyam classes in Kakkanad, Chalakudy and Potta, Kerala. Register to join.">
+  <meta property="og:description" content="Bharatanatyam classes in Kakkanad and Potta, Kerala, and online. Register to join.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#fcfcfc">
   <link rel="icon" href="favicon.png" type="image/png">
@@ -33,11 +33,12 @@
     <header class="nav">
       <div class="wrap nav-inner">
         <a class="brand" href="#top" aria-label="Natyanjali, back to top">
-          <img src="images/logo.png" alt="" width="25" height="42">
+          <img src="images/logo.png" alt="" width="22" height="42">
           Natyanjali
         </a>
         <nav class="nav-links" aria-label="Pages">
           <a href="about.html">About</a>
+          <a href="classes.html">Classes</a>
           <a href="gallery.html">Gallery</a>
         </nav>
         <div class="nav-actions">
@@ -56,9 +57,14 @@
               <img src="images/ornament-gold.png" alt="" width="390" height="352">
             </div>
             <h1 class="display">Natyanjali Nṛtta Kalakshetra</h1>
-            <p class="hero-malayalam" lang="ml">നാട്യാഞ്ജലി നൃത്ത കലാക്ഷേത്ര</p>
-            <p class="lede">A Bharatanatyam dance school in Kerala since 2013, with classes in Kakkanad, Chalakudy and Potta. Beginners are welcome.</p>
-            <a class="btn btn-primary btn-large" href="#register">Register to join</a>
+            <p class="since-label">Bharatanatyam · Since 2013</p>
+            <p class="hero-malayalam" lang="ml">നാട്യഞ്ജലി നൃത്ത കലാക്ഷേത്ര</p>
+            <p class="lede">A school that specialises in Bharatanatyam, with classes at Kakkanad and Potta and online. Beginners are welcome, and admissions are open all year.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-large" href="#register">Register to join</a>
+              <a class="btn btn-secondary btn-large" href="contact.html#message-card" data-inquiry>Ask a question</a>
+            </div>
+            <p class="hero-contact" id="hero-contact" hidden>Prefer to talk? <a id="hero-call" hidden>Call us</a><span id="hero-or" hidden> or </span><a id="hero-whatsapp" hidden target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
           </div>
         </div>
         <div class="hero-photo">
@@ -66,11 +72,39 @@
         </div>
       </section>
 
+      <section class="section wrap glance" id="classes" aria-labelledby="glance-title">
+        <div class="section-head">
+          <p class="label">Classes</p>
+          <h2 class="title" id="glance-title">Where and when we teach</h2>
+          <p class="lede">Bharatanatyam classes for kids and ladies. Choose a centre, or join us online.</p>
+        </div>
+        <div class="glance-grid">
+          <a class="card glance-card" href="classes.html#kakkanad">
+            <p class="label">Kochi</p>
+            <h3 class="heading">Kakkanad</h3>
+            <p>Kids and ladies, on working days and weekends.</p>
+            <span class="glance-link">See timings</span>
+          </a>
+          <a class="card glance-card" href="classes.html#potta">
+            <p class="label">Chalakudy</p>
+            <h3 class="heading">Potta</h3>
+            <p>Weekend batches, from beginners to advanced.</p>
+            <span class="glance-link">See timings</span>
+          </a>
+          <a class="card glance-card" href="classes.html#online">
+            <p class="label">Anywhere</p>
+            <h3 class="heading">Online</h3>
+            <p>Live classes for students in India and abroad.</p>
+            <span class="glance-link">See timings</span>
+          </a>
+        </div>
+      </section>
+
       <section class="section wrap register" id="register" aria-labelledby="register-title">
         <div class="register-grid">
           <div class="register-intro">
             <h2 class="title" id="register-title">Register to join the class</h2>
-            <p class="lede">It takes about two minutes. Parents can fill this in for their child.</p>
+            <p class="lede">Registration is for students who are ready to begin classes. If you only have a question, <a href="contact.html#message-card" data-inquiry>send us an enquiry</a> instead.</p>
             <h3 class="next-steps-title">What happens next</h3>
             <ol class="next-steps">
               <li><span class="label">01</span><span>We receive your registration.</span></li>
@@ -79,7 +113,15 @@
             </ol>
           </div>
 
-          <div class="card form-card">
+          <div class="card form-card" id="admission-external" hidden>
+            <p class="label">Admission form</p>
+            <h3 class="heading">Ready to start?</h3>
+            <p class="admission-note">Fill in the admission form to join. Please have the student's age, address, school and standard, and a parent's WhatsApp number ready.</p>
+            <a class="btn btn-primary btn-large btn-block" id="admission-open" target="_blank" rel="noopener">Open the admission form</a>
+            <p class="hint">It opens in a new tab.</p>
+          </div>
+
+          <div class="card form-card" id="admission-builtin">
             <form id="registration-form" novalidate>
               <div class="form-grid">
                 <div class="field span-2" data-field="studentName">
@@ -90,14 +132,14 @@
 
                 <div class="field" data-field="age">
                   <label class="field-label" for="age">Student's age</label>
-                  <input class="input" id="age" name="age" type="number" inputmode="numeric" min="3" max="99" required>
+                  <input class="input" id="age" name="age" type="number" inputmode="numeric" min="5" max="99" required>
                   <p class="field-error" hidden></p>
                 </div>
 
                 <div class="field" data-field="phone">
                   <label class="field-label" for="phone">Phone number</label>
                   <input class="input" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" required aria-describedby="phone-hint">
-                  <p class="hint" id="phone-hint">We'll call or WhatsApp you on this number.</p>
+                  <p class="hint" id="phone-hint">We'll call or WhatsApp you on this number. For kids, please give a parent's number.</p>
                   <p class="field-error" hidden></p>
                 </div>
 
@@ -105,8 +147,8 @@
                   <legend class="group-label">Class location</legend>
                   <div class="choice-row choice-short">
                     <label class="choice"><input type="radio" name="location" value="Kakkanad" required><span>Kakkanad</span></label>
-                    <label class="choice"><input type="radio" name="location" value="Chalakudy"><span>Chalakudy</span></label>
                     <label class="choice"><input type="radio" name="location" value="Potta"><span>Potta</span></label>
+                    <label class="choice"><input type="radio" name="location" value="Online"><span>Online</span></label>
                   </div>
                   <p class="field-error" hidden></p>
                 </fieldset>
@@ -114,17 +156,34 @@
                 <fieldset class="field span-2" data-field="batch">
                   <legend class="group-label">Batch</legend>
                   <div class="choice-row choice-short">
-                    <label class="choice"><input type="radio" name="batch" value="Children" required><span>Children</span></label>
-                    <label class="choice"><input type="radio" name="batch" value="Teens"><span>Teens</span></label>
-                    <label class="choice"><input type="radio" name="batch" value="Adults"><span>Adults</span></label>
+                    <label class="choice"><input type="radio" name="batch" value="Kids" required><span>Kids</span></label>
+                    <label class="choice"><input type="radio" name="batch" value="Ladies"><span>Ladies</span></label>
                   </div>
-                  <p class="hint">Children 5 to 10, Teens 11 to 17, Adults 18 and up.</p>
+                  <p class="hint">Kids start from age 5. Ladies batches are for adults.</p>
                   <p class="field-error" hidden></p>
                 </fieldset>
 
                 <div class="field span-2" data-field="guardianName" id="guardian-field" hidden>
                   <label class="field-label" for="guardianName">Parent or guardian's name</label>
                   <input class="input" id="guardianName" name="guardianName" type="text" maxlength="120">
+                  <p class="field-error" hidden></p>
+                </div>
+
+                <div class="field" data-field="schoolName" id="school-field" hidden>
+                  <label class="field-label" for="schoolName">School</label>
+                  <input class="input" id="schoolName" name="schoolName" type="text" maxlength="120">
+                  <p class="field-error" hidden></p>
+                </div>
+
+                <div class="field" data-field="standard" id="standard-field" hidden>
+                  <label class="field-label" for="standard">Standard (class)</label>
+                  <input class="input" id="standard" name="standard" type="text" maxlength="40">
+                  <p class="field-error" hidden></p>
+                </div>
+
+                <div class="field span-2" data-field="address">
+                  <label class="field-label" for="address">Address</label>
+                  <textarea class="input" id="address" name="address" rows="2" maxlength="300" autocomplete="street-address" required></textarea>
                   <p class="field-error" hidden></p>
                 </div>
 
@@ -145,14 +204,20 @@
                 </div>
 
                 <fieldset class="field span-2" data-field="preferredTime">
-                  <legend class="group-label">Preferred time</legend>
+                  <legend class="group-label">Preferred days</legend>
                   <div class="choice-row">
-                    <label class="choice"><input type="radio" name="preferredTime" value="Weekday evenings" required><span>Weekday evenings</span></label>
-                    <label class="choice"><input type="radio" name="preferredTime" value="Weekend mornings"><span>Weekend mornings</span></label>
-                    <label class="choice"><input type="radio" name="preferredTime" value="Any time"><span>Any time</span></label>
+                    <label class="choice"><input type="radio" name="preferredTime" value="Working days" required><span>Working days</span></label>
+                    <label class="choice"><input type="radio" name="preferredTime" value="Weekends"><span>Weekends</span></label>
+                    <label class="choice"><input type="radio" name="preferredTime" value="Either"><span>Either</span></label>
                   </div>
                   <p class="field-error" hidden></p>
                 </fieldset>
+
+                <div class="field span-2" data-field="healthNote">
+                  <label class="field-label" for="healthNote">Any injury or health condition? <span class="optional">(optional)</span></label>
+                  <textarea class="input" id="healthNote" name="healthNote" rows="2" maxlength="500" aria-describedby="health-hint"></textarea>
+                  <p class="hint" id="health-hint">If there is something the student shouldn't do in class, please tell us now so we can plan around it.</p>
+                </div>
 
                 <div class="field span-2" data-field="message">
                   <label class="field-label" for="message">Anything we should know? <span class="optional">(optional)</span></label>
@@ -167,7 +232,7 @@
                 <div class="field span-2" data-field="consent">
                   <label class="consent">
                     <input type="checkbox" id="consent" name="consent" required>
-                    <span>I agree that Natyanjali Nṛtta Kalakshetra can keep these details and contact me about this registration. If the student is under 18, I am their parent or guardian.</span>
+                    <span>I agree that Natyanjali Nṛtta Kalakshetra can keep these details and contact me about this registration. I have told the school about any injury or health condition that may affect the student's classes. If the student is under 18, I am their parent or guardian.</span>
                   </label>
                   <p class="field-error" hidden></p>
                 </div>
@@ -256,13 +321,14 @@
   <footer class="footer">
     <div class="wrap">
       <div class="footer-top">
-        <p class="footer-name">Natyanjali Nṛtta Kalakshetra</p>
+        <p class="footer-name">Natyanjali Nṛtta Kalakshetra <span>Since 2013</span></p>
         <a class="btn btn-secondary btn-large" href="#register">Register to join</a>
       </div>
       <div class="footer-bottom">
         <ul class="footer-contact" id="footer-contact">
           <li id="footer-address">Kerala, India</li>
           <li><a href="about.html">About</a></li>
+          <li><a href="classes.html">Classes</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a id="footer-instagram" target="_blank" rel="noopener">Instagram</a></li>

@@ -21,24 +21,38 @@
       return;
     }
 
-    places.forEach(function (place, index) {
+    var centres = 0;
+    places.forEach(function (place) {
       var target = place.map || place.address || place.name;
       var card = document.createElement("article");
       card.className = "card location-card";
 
-      var frame = document.createElement("iframe");
-      frame.className = "location-map";
-      frame.title = "Map of our " + place.name + " class";
-      frame.loading = "lazy";
-      frame.referrerPolicy = "no-referrer-when-downgrade";
-      frame.src = "https://maps.google.com/maps?q=" + encodeURIComponent(target) + "&z=16&output=embed";
+      var visual;
+      if (place.online) {
+        // The online classes have no address, so this card shows the ornament instead of a map
+        visual = document.createElement("div");
+        visual.className = "location-map location-online";
+        var mark = document.createElement("img");
+        mark.src = "images/ornament-gold.png";
+        mark.alt = "";
+        mark.width = 390;
+        mark.height = 352;
+        visual.appendChild(mark);
+      } else {
+        visual = document.createElement("iframe");
+        visual.className = "location-map";
+        visual.title = "Map of our " + place.name + " centre";
+        visual.loading = "lazy";
+        visual.referrerPolicy = "no-referrer-when-downgrade";
+        visual.src = "https://maps.google.com/maps?q=" + encodeURIComponent(target) + "&z=16&output=embed";
+      }
 
       var body = document.createElement("div");
       body.className = "location-body";
 
       var number = document.createElement("p");
       number.className = "label";
-      number.textContent = "Location " + String(index + 1).padStart(2, "0");
+      number.textContent = place.online ? "Online" : "Centre " + String(++centres).padStart(2, "0");
 
       var name = document.createElement("h3");
       name.className = "heading";
@@ -48,19 +62,24 @@
       address.className = "location-address";
       address.textContent = place.address || "";
 
-      var directions = document.createElement("a");
-      directions.className = "btn btn-secondary btn-block";
-      directions.href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(target);
-      directions.target = "_blank";
-      directions.rel = "noopener";
-      directions.textContent = "Get directions";
-      directions.setAttribute("aria-label", "Get directions to our " + place.name + " class");
+      var action = document.createElement("a");
+      action.className = "btn btn-secondary btn-block";
+      if (place.online) {
+        action.href = place.link || "classes.html#online";
+        action.textContent = place.linkText || "See online batches";
+      } else {
+        action.href = place.directions || "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(target);
+        action.target = "_blank";
+        action.rel = "noopener";
+        action.textContent = "Get directions";
+        action.setAttribute("aria-label", "Get directions to our " + place.name + " centre");
+      }
 
       body.appendChild(number);
       body.appendChild(name);
       if (place.address) body.appendChild(address);
-      body.appendChild(directions);
-      card.appendChild(frame);
+      body.appendChild(action);
+      card.appendChild(visual);
       card.appendChild(body);
       grid.appendChild(card);
     });

@@ -498,6 +498,8 @@ select.input {
 /* On touch screens the map is a picture, so a finger swiping down the page doesn't get caught by it.
    The Get directions button opens the full, interactive map instead. */
 @media (hover: none) { .location-map { pointer-events: none; } }
+.location-online { display: grid; place-items: center; background: var(--surface-2); }
+.location-online img { width: 5.5rem; height: auto; }
 .location-body { display: flex; flex: 1; flex-direction: column; gap: var(--space-2); padding: var(--space-5); }
 .location-body .label { color: var(--text-3); }
 .location-address { flex: 1; margin-bottom: var(--space-3); color: var(--text-2); line-height: 1.5; }
@@ -570,6 +572,63 @@ select.input {
 .lightbox-close { top: var(--space-4); right: var(--space-4); }
 .lightbox-prev { left: var(--space-4); top: 50%; transform: translateY(-50%); }
 .lightbox-next { right: var(--space-4); top: 50%; transform: translateY(-50%); }
+
+/* A line at the top of every page, set with `announcement` in js/config.js */
+.announcement { padding: var(--space-2) var(--gutter); background: var(--ink); color: #fff; font-size: var(--text-small); text-align: center; }
+.announcement p { margin: 0 auto; max-width: var(--page-max); }
+.announcement a { color: var(--gold-on-dark); font-weight: var(--weight-medium); text-underline-offset: 3px; }
+
+/* Home page hero: the "Since 2013" label, the two buttons and the Call / WhatsApp line */
+.since-label { margin-top: var(--space-2); color: var(--text-3); font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: 0.14em; text-transform: uppercase; }
+.hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); }
+.hero-contact { margin-top: var(--space-4); color: var(--text-2); font-size: var(--text-small); }
+.hero-contact a { color: var(--text); font-weight: var(--weight-medium); text-decoration: underline; text-underline-offset: 3px; }
+.footer-name span { margin-left: var(--space-2); color: var(--text-inverse-2); font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* The admission form button, shown instead of the built-in form when admissionUrl is set */
+#admission-external .label { color: var(--text-3); }
+#admission-external .heading { margin-block: var(--space-1) var(--space-3); }
+.admission-note { margin-bottom: var(--space-5); color: var(--text-2); font-size: var(--text-lede); line-height: 1.55; }
+#admission-external .hint { margin-top: var(--space-3); text-align: center; }
+
+/* Section headings with a small label above the title */
+.section-head .label { display: block; margin-bottom: var(--space-2); color: var(--text-3); }
+
+/* Home page: where and when we teach, three cards that link to the Classes page */
+.glance { padding-bottom: var(--space-7); }
+.glance-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); margin-top: var(--space-7); }
+.glance-card { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-5); color: inherit; text-decoration: none; box-shadow: var(--shadow-card); transition: border-color var(--duration-fast) var(--ease-in-out), transform var(--duration-base) var(--ease-out); }
+.glance-card .label { color: var(--text-3); }
+.glance-card p:not(.label) { flex: 1; color: var(--text-2); }
+.glance-link { color: var(--text); font-weight: var(--weight-medium); text-decoration: underline; text-underline-offset: 4px; }
+.glance-card:hover { border-color: var(--gold-on-dark); transform: translateY(-2px); }
+.glance-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* Classes page */
+.facts-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); }
+.facts-list li { padding: var(--space-4); border: 1px solid var(--stroke); border-radius: var(--radius-lg); background: var(--surface-raised); }
+.facts-list .label { display: block; margin-bottom: var(--space-1); color: var(--text-3); }
+.facts-list strong { font-weight: var(--weight-medium); line-height: 1.35; }
+.batches { display: grid; gap: var(--space-5); margin-top: var(--space-7); }
+.batch-card { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.7fr); gap: var(--space-6); padding: clamp(var(--space-5), 3vw, 2.5rem); box-shadow: var(--shadow-card); }
+.batch-head .label { color: var(--text-3); }
+.batch-head .title { margin-block: var(--space-1) var(--space-2); }
+.batch-address { color: var(--text); }
+.batch-for { margin-top: var(--space-3); color: var(--text-2); }
+.batch-head .btn { margin-top: var(--space-4); }
+.batch-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5) var(--space-6); align-content: start; }
+.batch-group h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: var(--weight-regular); letter-spacing: -0.01em; }
+.batch-days { margin: 2px 0 var(--space-2); color: var(--text-3); font-size: var(--text-small); }
+.batch-group h3 + .batch-list { margin-top: var(--space-2); }
+.batch-list li { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3); padding-block: var(--space-2); border-top: 1px solid var(--stroke); }
+.batch-list li:last-child { border-bottom: 1px solid var(--stroke); }
+.batch-list b { display: block; font-weight: var(--weight-medium); }
+.batch-list small { display: block; color: var(--text-3); font-size: var(--text-small); }
+.batch-list li > span:last-child { flex: none; color: var(--text-2); text-align: right; white-space: nowrap; }
+.policy-list dd { margin-top: var(--space-1); color: var(--text-2); line-height: 1.55; }
+.know-card .title { margin-bottom: var(--space-3); }
+.cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-5); }
+.cta-buttons .btn { margin-top: 0; }
 
 .about-journey { margin-top: var(--space-9); }
 
@@ -847,6 +906,10 @@ select.input {
   .register-intro { position: static; }
 
   .about-cards { grid-template-columns: minmax(0, 1fr); }
+  .glance-grid { grid-template-columns: minmax(0, 1fr); margin-top: var(--space-6); }
+  .facts-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .batch-card { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
+  .batch-groups { grid-template-columns: minmax(0, 1fr); }
   .tutor-card { grid-template-columns: minmax(0, 1fr); }
   .tutor-portrait { width: min(100%, 18rem); }
   .gallery-grid { margin-top: var(--space-6); }

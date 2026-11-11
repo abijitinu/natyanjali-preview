@@ -54,27 +54,30 @@
   }
 
   function batchForAge(age) {
-    if (age <= 10) return "Children";
-    if (age <= 17) return "Teens";
-    return "Adults";
+    return age < 18 ? "Kids" : "Ladies";
   }
 
   function currentAge() {
     var age = parseInt(form.elements.age.value, 10);
-    return age >= 3 && age <= 99 ? age : null;
+    return age >= 5 && age <= 99 ? age : null;
   }
 
   function needsGuardian() {
     var age = currentAge();
     if (age !== null) return age < 18;
     var batch = form.elements.batch.value;
-    return batch === "Children" || batch === "Teens";
+    return batch === "Kids";
   }
 
   function updateGuardian() {
     var show = needsGuardian();
     guardianField.hidden = !show;
     form.elements.guardianName.required = show;
+    // Kids also give their school and standard
+    document.getElementById("school-field").hidden = !show;
+    document.getElementById("standard-field").hidden = !show;
+    form.elements.schoolName.required = show;
+    form.elements.standard.required = show;
     if (!show) clearError("guardianName");
   }
 
@@ -142,13 +145,16 @@
     }
 
     check("studentName", el.studentName.value.trim() ? "" : "Please enter the student's name.");
-    check("age", currentAge() === null ? "Please enter an age between 3 and 99." : "");
+    check("age", currentAge() === null ? "Please enter an age between 5 and 99." : "");
     check("location", el.location.value ? "" : "Please choose a class location.");
     check("batch", el.batch.value ? "" : "Please choose a batch.");
     check("guardianName", needsGuardian() && !el.guardianName.value.trim() ? "Please enter a parent or guardian's name." : "");
+    check("schoolName", needsGuardian() && !el.schoolName.value.trim() ? "Please enter the school the student attends." : "");
+    check("standard", needsGuardian() && !el.standard.value.trim() ? "Please enter the standard (class) the student studies in." : "");
+    check("address", el.address.value.trim() ? "" : "Please enter the address.");
     check("phone", normalisePhone(el.phone.value) ? "" : "Please enter a 10-digit mobile number.");
     check("email", el.email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.email.value.trim()) ? "That email doesn't look right. Please check it." : "");
-    check("preferredTime", el.preferredTime.value ? "" : "Please choose a preferred time.");
+    check("preferredTime", el.preferredTime.value ? "" : "Please choose your preferred days.");
     check("consent", consent.checked ? "" : "Please tick this box so we can contact you.");
 
     return problems;
@@ -162,10 +168,14 @@
       location: el.location.value,
       batch: el.batch.value,
       guardianName: needsGuardian() ? el.guardianName.value.trim() : "",
+      schoolName: needsGuardian() ? el.schoolName.value.trim() : "",
+      standard: needsGuardian() ? el.standard.value.trim() : "",
+      address: el.address.value.trim(),
       phone: normalisePhone(el.phone.value),
       email: el.email.value.trim(),
       experience: el.experience.value,
       preferredTime: el.preferredTime.value,
+      healthNote: el.healthNote.value.trim(),
       message: el.message.value.trim(),
       website: el.website.value
     };
@@ -182,9 +192,12 @@
       "Batch: " + data.batch
     ];
     if (data.guardianName) lines.push("Parent or guardian: " + data.guardianName);
+    if (data.schoolName) lines.push("School: " + data.schoolName + (data.standard ? ", " + data.standard : ""));
+    lines.push("Address: " + data.address);
     lines.push("Phone: " + data.phone);
     lines.push("Experience: " + data.experience);
-    lines.push("Preferred time: " + data.preferredTime);
+    lines.push("Preferred days: " + data.preferredTime);
+    if (data.healthNote) lines.push("Injury or health note: " + data.healthNote);
     if (data.message) lines.push("Note: " + data.message);
     return "https://wa.me/" + number + "?text=" + encodeURIComponent(lines.join("\n"));
   }
@@ -499,6 +512,8 @@
       list.appendChild(row);
     }
 
+    var inquiry = safeUrl(config.inquiryUrl);
+    if (inquiry) add("Enquiry form", inquiry, "Open the enquiry form", true);
     if (config.phone) add("Phone", "tel:" + config.phone.replace(/\s/g, ""), config.phone);
     if (config.whatsapp) add("WhatsApp", "https://wa.me/" + String(config.whatsapp).replace(/\D/g, ""), "Message us on WhatsApp", true);
     if (config.email) add("Email", "mailto:" + config.email, config.email);
@@ -526,7 +541,7 @@
     var selector = [
       ".register-intro", ".form-card", ".section-head", ".journey-list li", ".journey-photo",
       ".seated-figure > img", ".seated-reflection", ".ig-carousel", ".ig-frame", ".ig-actions",
-      ".about-card", ".gallery-item", ".about-cta > *", ".footer-top"
+      ".about-card", ".gallery-item", ".batch-card", ".glance-card", ".about-cta > *", ".footer-top"
     ].join(",");
 
     document.querySelectorAll(selector).forEach(function (element) {
@@ -538,7 +553,80 @@
   // The Contact page's message form (js/contact.js) uses the same phone-number check
   window.NatyanjaliUtils = { normalisePhone: normalisePhone };
 
+  /* ------------------------------------------------------------------------
+     Links, announcement and the Call / WhatsApp line. All of them are set in js/config.js.
+     ------------------------------------------------------------------------ */
+  function safeUrl(value) {
+    var url = String(value || "").trim();
+    return /^https?:\/\//i.test(url) ? url : "";
+  }
+
+  function initLinks() {
+    var admission = safeUrl(config.admissionUrl);
+    var inquiry = safeUrl(config.inquiryUrl);
+    var builtIn = document.getElementById("admission-builtin");
+    var external = document.getElementById("admission-external");
+    // With an admission link, the Register section shows a button to that form instead of our own form
+    if (admission && builtIn && external) {
+      builtIn.hidden = true;
+      external.hidden = false;
+      document.getElementById("admission-open").href = admission;
+    }
+    // Every "Ask a question" button goes to the enquiry form, if there is one
+    if (inquiry) {
+      document.querySelectorAll("[data-inquiry]").forEach(function (link) {
+        link.href = inquiry;
+        link.target = "_blank";
+        link.rel = "noopener";
+      });
+    }
+  }
+
+  function initAnnouncement() {
+    var text = String(config.announcement || "").trim();
+    var page = document.querySelector(".page");
+    if (!text || !page) return;
+    var bar = document.createElement("div");
+    var line = document.createElement("p");
+    bar.className = "announcement";
+    bar.setAttribute("role", "region");
+    bar.setAttribute("aria-label", "Announcement");
+    line.appendChild(document.createTextNode(text));
+    var target = String(config.announcementLink || "").trim();
+    if (/^(https?:\/\/|[a-z0-9_-]+\.html|#)/i.test(target)) {
+      var link = document.createElement("a");
+      link.href = target;
+      link.textContent = config.announcementLinkText || "Find out more";
+      line.appendChild(document.createTextNode(" "));
+      line.appendChild(link);
+    }
+    bar.appendChild(line);
+    page.insertBefore(bar, page.firstChild);
+  }
+
+  function initHeroContact() {
+    var box = document.getElementById("hero-contact");
+    if (!box) return;
+    var phone = String(config.phone || "").replace(/\s/g, "");
+    var number = String(config.whatsapp || "").replace(/\D/g, "");
+    var call = document.getElementById("hero-call");
+    var chat = document.getElementById("hero-whatsapp");
+    if (phone) {
+      call.href = "tel:" + phone;
+      call.hidden = false;
+    }
+    if (number) {
+      chat.href = "https://wa.me/" + number + "?text=" + encodeURIComponent("Hello, I'd like to know about the classes at Natyanjali Nṛtta Kalakshetra.");
+      chat.hidden = false;
+    }
+    document.getElementById("hero-or").hidden = !(phone && number);
+    box.hidden = !(phone || number);
+  }
+
   buildRosette();
+  initLinks();
+  initAnnouncement();
+  initHeroContact();
   initContactList();
   if (form) {
     initForm();
