@@ -1030,3 +1030,4 @@ select.input {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
 }
+.batch-head strong { color: var(--text); font-weight: 600; }
